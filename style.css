@@ -1,40 +1,46 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    background-color: #3B3B71;
-    font-family: 'Poppins', sans-serif;
-    background-color: #18181A;
     position: relative;
     margin-top: -3em;
+    width: 100%;
+    height: 100%;
+
+    font-family: 'Poppins', sans-serif;
+    background-color: #18181A;
 }
 
 .more-settings {
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    height: 3em;
-    padding-right: 0.4em;
-    background-color: transparent;
     position: sticky;
+    top: 0;
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    top: 0;
+
+    width: 100%;
+    max-width: 600px;
+    height: 3em;
+    margin: auto;
+    padding-right: 0.4em;
+
+    background-color: transparent;
 }
 
 .more-btn {
     width: 2rem;
     height: 2rem;
-    cursor: pointer;
-    background-color: white;
+
     outline: none;
     border: none;
+
+    background-color: white;
+
+    cursor: pointer;
 }
 
 .list-container {
@@ -43,39 +49,30 @@ body {
     max-width: 600px;
     min-height: 100vh;
     margin: auto;
-    background-color: white;
     padding: 2em 2.5em 4em 2.5em;
+
+    background-color: white;
     color: #3B3B71;
 }
 
 .list-name {
+    margin-bottom: 2rem;
+
     color: #3B3B71;
     font-size: 1.6em;
-    margin-bottom: 2rem;
     font-family: 'Merriweather', serif;
-}
-
-.list-items {
-    margin: 0 0 2em 0;
-    list-style: none;
-}
-
-.item {
-    margin-bottom: 1em;
 }
 
 .size {
     margin-bottom: 0.5em;
 }
 
-.completed {
-    text-decoration: line-through;
-    text-decoration-color: #7474a8;
-    -moz-text-decoration-color: ;
+.list-undone {
+    margin: 0 0 2em 0;
+    list-style: none;
 }
 
-
-.list-items-completed {
+.list-completed {
     color: #545483;
     opacity: 0.6;
 }
@@ -84,129 +81,150 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    margin-bottom: 1em;
+
+    background-color: transparent;
     border-bottom: 1px dashed #7474a8;
     cursor: pointer;
+}
 
+.completed {
+    text-decoration: line-through;
+    text-decoration-color: #7474a8;
+    -moz-text-decoration-color: ;
 }
 
 .item-text {
     flex: 1;
+    pointer-events: none;
 }
 
-
-
 .delete-btn {
-    text-indent: -1000px;
-    font-size: 0.1px;
-    color: rgba(0, 0, 0, 0);
+    position: relative;
+
+    align-self: flex-end;
+    overflow: hidden;
+
     height: 2rem;
     width: 2rem;
-    overflow: hidden;
-    position: relative;
+
+    color: rgba(0, 0, 0, 0);
     opacity: 0.5;
-    z-index: 10;
+
+    text-indent: -1000px;
+    font-size: 0.1px;
     cursor: pointer;
-    align-self: flex-end;
 }
 
 .delete-btn:focus {
     opacity: 1;
-
 }
 
 .delete-btn:hover {
     opacity: 1;
-
 }
 
 .delete-btn-icon {
-    display: block;
-    text-indent: 0rem;
-    font-size: 1rem;
-    color: #3B3B71;
     position: absolute;
     left: 0.1rem;
     bottom: -0.2rem;
-    /* line-height: 1.7rem; */
+
+    display: block;
+
+    color: #3B3B71;
     background-color: white;
 
+    text-indent: 0rem;
+    font-size: 1rem;
+    pointer-events: none;
 }
 
 .add-item-form-container {
-    width: 100%;
     position: fixed;
-    bottom: 0;
     left: 0;
-    background-color: transparent;
+    bottom: 0;
 
+    width: 100%;
+
+    background-color: transparent;
 }
 
 .add-item-form {
-    width: 100%;
-    height: 4em;
-    padding: 0.2em 2.5em;
+    position: relative;
 
-    max-width: 600px;
-    margin: auto;
-    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
+
+    width: 100%;
+    max-width: 600px;
+    height: 4em;
+    padding: 0.2em 2.5em;
+    margin: auto;
+
+    background-color: white;
 }
 
-
 .text-input {
+    flex: 1;
+
     height: 2.5em;
+
     font-size: 1em;
     text-indent: 0.5em;
-    flex: 1
 }
 
 .input-item-label {
-    height: 1px;
-    width: 1px;
-    font-size: 1px;
     position: absolute;
     bottom: -5px;
     overflow: hidden;
 
+    height: 1px;
+    width: 1px;
 
+    font-size: 1px;
 }
 
 .add-item-btn {
+    position: relative;
+
+    width: 4em;
+    height: 2.5em;
+
+    color: transparent;
+    background-color: #3B3B71;
+    box-shadow: none;
+    border: none;
+    /* border-color: #3B3B71; */
+
     font-size: 1em;
     text-indent: -2000px;
-    color: transparent;
-    height: 2.5em;
-    width: 4em;
-    position: relative;
-    box-shadow: none;
-    border-color: #3B3B71;
-    background-color: #3B3B71;
 }
 
 .add-item-btn:focus,
 .add-item-btn:hover {
-    outline: none;
     background-color: #6161de;
-    border-color: #6161de;
-
+    border: none;
+    /* border-color: #6161de; */
+    outline: none;
 }
 
-
 .add-item-icon {
-    display: block;
-    text-indent: 0.2em;
     position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+
+    display: block;
     width: 100%;
     height: 100%;
-    bottom: 0.1em;
-    font-size: 2em;
-    left: -0.1em;
+
     color: white;
     border: none;
     outline: none;
+
+    font-size: 2em;
+    text-indent: 0.2em;
 }
 
 .hidden {
