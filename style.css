@@ -67,6 +67,12 @@ body {
     margin-bottom: 0.5em;
 }
 
+.list {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
 .list-undone {
     margin: 0 0 2em 0;
     list-style: none;

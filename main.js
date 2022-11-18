@@ -1,6 +1,8 @@
 "use strict";
 ////testing development only
 const htmlValidator = require("./src/htmlValidator.js");
+const { LIST_EXAMPLE, DEFAULT_LIST } = require("./defaultList.js");
+const Ui = require("./src/Ui.js");
 ///testing development only
 //const Ui = require("./src/Ui.js");
 const ListItemElement = require("./src/ListItemElement.js");
@@ -13,68 +15,127 @@ const listUndoneElement = document.getElementById("list-undone");
 const sizeUndoneElement = document.getElementById("size-undone");
 const listCompletedElement = document.getElementById("list-completed");
 const sizeCompletedElement = document.getElementById("size-completed");
-
+const itemInputElement = document.getElementById("input-item");
+const itemInputFormElement = document.getElementById("add-item-form");
 htmlValidator();
-let listExample = {
-  name: "Shopping",
-  sizeCompleted: 4,
-  sizeUndone: 4,
-  items: [
-    { id: 0, value: "Duona" },
-    { id: 1, value: "Duona" },
-    { id: 2, value: "Sviestas" },
-    { id: 3, value: "Makaronai" },
-    { id: 4, value: "Tulikinis", completed: true },
-    { id: 5, value: "katems", completed: true },
-    { id: 6, value: "bulbes", completed: true },
-    { id: 7, value: "bulbes", completed: true },
-  ],
-};
-let list = listExample;
-const actions = {
-  deleteItem: function (e) {
-    let completed = e.target.dataset.completed;
-    let id = Number(e.target.dataset.id);
-    list.items = list.items.filter((item) => {
-      if (item.id !== id) {
-        return item;
-      } else {
-        if (item.completed) {
-          list.sizeCompleted--;
-          sizeCompletedElement.innerText = `(${list.sizeCompleted})`;
-        } else {
-          list.sizeUndone--;
-          sizeUndoneElement.innerText = `(${list.sizeUndone})`;
-        }
-      }
-    });
-    e.target.parentElement.remove();
-  },
+class List {
+  constructor(listFromStorage) {
+    this.name = listFromStorage.name;
+    this.itemsCompleted = new Map(listFromStorage.itemsCompleted);
+    this.itemsUndone = new Map(listFromStorage.itemsUndone);
+  }
+  prepListForStorage() {
+    let listForStorage = {
+      name: this.name,
+      itemsCompleted: [...this.itemsCompleted],
+      itemsUndone: [...this.itemsUndone],
+    };
+    return listForStorage;
+  }
+  save() {
+    myLocalStorage.setItem(this.name, this.prepListForStorage());
+  }
+  addItem(value) {
+    let id = new Date().getTime();
+    let item = { id: id, value: value, completed: false };
+    this.itemsUndone.set(id, item);
+    this.save();
+    console.log(this.itemsUndone);
+    return item;
+  }
 
+  deleteItem(id) {
+    this.itemsUndone.delete(id);
+    this.itemsCompleted.delete(id);
+    console.log(this.itemsUndone);
+    this.save();
+  }
+  toggleItemCompleted(id) {
+    let item = this.itemsUndone.get(id);
+    if (item) {
+      console.log(item);
+      this.itemsUndone.delete(id);
+      item.completed = !item.completed;
+      item.id = new Date().getTime();
+      this.itemsCompleted.set(item.id, item);
+    } else {
+      console.log(item);
+      item = this.itemsCompleted.get(id);
+      this.itemsCompleted.delete(id);
+      item.completed = !item.completed;
+      item.id = new Date().getTime();
+      this.itemsUndone.set(item.id, item);
+    }
+    this.save();
+    return item;
+  }
+}
+myLocalStorage.accept();
+let list = new List(LIST_EXAMPLE);
+let ui = new Ui(list);
+myLocalStorage.setItem(list.name, list.prepListForStorage());
+//populateListElements(list);
+
+const userActions = {
+  addItem: function (e) {
+    e.preventDefault();
+    let value = itemInputElement.value.trim();
+    if (value.length > 0) {
+      ui.addItemElement(list.addItem(value));
+    }
+    itemInputFormElement.reset();
+    itemInputElement.value = "";
+    ui.updateSizeElements();
+  },
+  deleteItem: function (e) {
+    let id = Number(e.target.dataset.id);
+    list.deleteItem(id);
+    e.target.parentElement.remove();
+    ui.updateSizeElements();
+  },
   toggleItemCompleted: function (e) {
-    console.log(e.target.dataset);
+    let id = Number(e.target.dataset.id);
+    let item = list.toggleItemCompleted(id);
+    ui.addItemElement(item);
+    e.target.remove();
+    ui.updateSizeElements();
   },
 };
+
 body.addEventListener("click", (e) => {
-  if (e.target.dataset.action) {
+  let action = e.target.dataset.action;
+  if (action) {
     try {
-      actions[e.target.dataset.action](e);
+      userActions[action](e);
     } catch (e) {
       console.log(e);
     }
   }
 });
-
-list.items.forEach((item) => appendItem(item));
-listNameElement.textContent = list.name;
-sizeUndoneElement.textContent = `(${list.sizeUndone})`;
-sizeCompletedElement.textContent = `(${list.sizeCompleted})`;
-
-function appendItem(item) {
-  let element = new ListItemElement(item);
-  let parentElement = !item.completed ? listUndoneElement : listCompletedElement;
-  parentElement.appendChild(element);
-}
+// function addItemElement(item) {
+//   if (item.completed) {
+//     listCompletedElement.prepend(new ListItemElement(item));
+//   } else {
+//     listUndoneElement.append(new ListItemElement(item));
+//   }
+// }
+// function updateSizeElements() {
+//   sizeUndoneElement.textContent = `(${list.itemsUndone.size})`;
+//   sizeCompletedElement.textContent = `(${list.itemsCompleted.size})`;
+// }
+// function populateListElements(list) {
+//   list.itemsUndone.forEach((item, key) => listUndoneElement.append(new ListItemElement(item)));
+//   list.itemsCompleted.forEach((item, key) => listCompletedElement.prepend(new ListItemElement(item)));
+//   listNameElement.textContent = list.name;
+//   sizeUndoneElement.textContent = `(${list.itemsUndone.size})`;
+//   sizeCompletedElement.textContent = `(${list.itemsCompleted.size})`;
+// }
+// function resetListElements() {
+//   listUndoneElement.innerHTML = "";
+//   listCompletedElement.innerHTML = "";
+//   sizeUndoneElement.textContent = `(0)`;
+//   sizeCompletedElement.textContent = `(0)`;
+// }
 
 //let list = new List(listExample);
 //let uiController = new UiController(list);
