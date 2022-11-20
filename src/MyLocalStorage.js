@@ -35,6 +35,15 @@ class MyLocalStorage {
     Object.keys(localStorage).map((key) => (obj[key] = this.getItem(key)));
     return obj;
   }
+  getAllLists() {
+    let all = [];
+    Object.keys(localStorage).forEach((key) => {
+      if (key !== "selectedListId" && key !== "isAccepted") {
+        all.push(this.getItem(key));
+      }
+    });
+    return new Map(all.map((list) => [list.id, list]));
+  }
   setItem(name, value) {
     if (this.isAccepted) {
       if (typeof value === "object") {

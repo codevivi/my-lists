@@ -11,8 +11,13 @@ class Ui {
   constructor(list) {
     this.list = list;
     Ui.resetListElements();
-    this.list.itemsUndone.forEach((item, key) => listUndoneElement.append(new ListItemElement(item)));
-    this.list.itemsCompleted.forEach((item, key) => listCompletedElement.prepend(new ListItemElement(item)));
+    let itemsUndoneElements = new Map();
+    list.itemsUndone.forEach((item) => itemsUndoneElements.set(item.id, new ListItemElement(item)));
+    console.log(itemsUndoneElements);
+    itemsUndoneElements.forEach((element) => listUndoneElement.append(element));
+    this.itemsUndoneElements = itemsUndoneElements;
+    //this.list.itemsUndone.forEach((item, key) => listUndoneElement.append(new ListItemElement(item)));
+    //this.list.itemsCompleted.forEach((item, key) => listCompletedElement.prepend(new ListItemElement(item)));
     listNameElement.textContent = this.list.name;
     sizeUndoneElement.textContent = `(${this.list.itemsUndone.size})`;
     sizeCompletedElement.textContent = `(${this.list.itemsCompleted.size})`;
@@ -21,20 +26,20 @@ class Ui {
     if (item.completed) {
       listCompletedElement.prepend(new ListItemElement(item));
     } else {
-      listUndoneElement.append(new ListItemElement(item));
+      this.itemsUndoneElements.set(new ListItemElement(item));
+      listUndoneElement.append(this.itemsUndoneElements.get(item.id));
+    }
+  }
+  deleteItemElement(item) {
+    if (item.completed) {
+      listCompletedElement.getElementById(`id${item.id}`);
     }
   }
   updateSizeElements() {
     sizeUndoneElement.textContent = `(${this.list.itemsUndone.size})`;
     sizeCompletedElement.textContent = `(${this.list.itemsCompleted.size})`;
   }
-  static populateListElements() {
-    this.list.itemsUndone.forEach((item, key) => listUndoneElement.append(new ListItemElement(item)));
-    this.list.itemsCompleted.forEach((item, key) => listCompletedElement.prepend(new ListItemElement(item)));
-    listNameElement.textContent = this.list.name;
-    sizeUndoneElement.textContent = `(${this.list.itemsUndone.size})`;
-    sizeCompletedElement.textContent = `(${this.list.itemsCompleted.size})`;
-  }
+
   static resetListElements() {
     listUndoneElement.innerHTML = "";
     listCompletedElement.innerHTML = "";

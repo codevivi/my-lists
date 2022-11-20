@@ -43,6 +43,13 @@ body {
     cursor: pointer;
 }
 
+.more-btn:focus,
+.more-btn:hover {
+    border-top: 1px solid #545483;
+}
+
+
+
 .list-container {
     height: auto;
     width: 100%;
@@ -63,8 +70,37 @@ body {
     font-family: 'Merriweather', serif;
 }
 
+.lists {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    list-style: none;
+    color: #545483;
+    cursor: pointer;
+    padding-bottom: 0.3em;
+    flex-wrap: wrap;
+
+}
+
+.list-to-choose {
+    margin: 0.5em;
+    opacity: 0.6;
+}
+
+.list-to-choose:hover,
+.list-to-choose:focus {
+    color: #3B3B71;
+    opacity: 1;
+    outline: none;
+}
+
 .size {
     margin-bottom: 0.5em;
+}
+
+.size-completed {
+    color: #545483;
+    opacity: 0.6;
 }
 
 .list {
@@ -156,7 +192,11 @@ body {
     background-color: transparent;
 }
 
-.add-item-form {
+.choose-list-nav {
+    padding: 0;
+}
+
+.form {
     position: relative;
 
     display: flex;
@@ -172,18 +212,24 @@ body {
     background-color: white;
 }
 
+.add-item-form {}
+
+.add-list-form {
+    width: 100%;
+    padding: 0;
+}
+
 .text-input {
     flex: 1;
-
     height: 2.5em;
-
     font-size: 1em;
     text-indent: 0.5em;
 }
 
-.input-item-label {
+.input-label {
     position: absolute;
-    bottom: -5px;
+    text-indent: -2500px;
+    left: -2500px;
     overflow: hidden;
 
     height: 1px;
@@ -192,7 +238,9 @@ body {
     font-size: 1px;
 }
 
-.add-item-btn {
+.input-item-label {}
+
+.add-btn {
     position: relative;
 
     width: 4em;
@@ -208,15 +256,15 @@ body {
     text-indent: -2000px;
 }
 
-.add-item-btn:focus,
-.add-item-btn:hover {
+.add-btn:focus,
+.add-btn:hover {
     background-color: #6161de;
     border: none;
     /* border-color: #6161de; */
     outline: none;
 }
 
-.add-item-icon {
+.add-icon {
     position: absolute;
     bottom: 0.1em;
     left: -0.1em;
@@ -235,4 +283,10 @@ body {
 
 .hidden {
     display: none;
+}
+
+input::placeholder {
+    opacity: 0.3;
+    letter-spacing: 0.2em;
+
 }

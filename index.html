@@ -11,12 +11,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Document</title>
+    <title>List</title>
 </head>
 
 <body>
     <div class="more-settings">
-        <button class="more-btn btn btn-icon" id="more-btn">
+        <button class="more-btn btn btn-icon" tabindex="0" id="more-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.19 14.06C20.3277 14.06 21.25 13.1377 21.25 12C21.25 10.8623 20.3277 9.94 19.19 9.94C18.0523 9.94 17.13 10.8623 17.13 12C17.13 13.1377 18.0523 14.06 19.19 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M12 14.06C13.1377 14.06 14.06 13.1377 14.06 12C14.06 10.8623 13.1377 9.94 12 9.94C10.8623 9.94 9.94 10.8623 9.94 12C9.94 13.1377 10.8623 14.06 12 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -25,9 +25,18 @@
         </button>
     </div>
     <div id="list-container" class="list-container">
+        <nav class="choose-list-nav">
+            <form class="form add-list-form" id="add-list-form" action="#">
+                <label class="input-label input-list-label" for="input-list">Create new list</label>
+                <input id="input-list" class="text-input" placeholder="Create new list" minlength="1" maxlength="50" required size="16" name="input-list" type="text">
+                <button id="add-list-btn" class="btn add-btn add-list-btn" data-action="addList" type="submit">Add<span class="add-icon">+</span></button>
+            </form>
+            <ul id='lists' class="lists">
+            </ul>
 
-        <h1 id="list-name" class="list-name" contenteditable="true" spellcheck="false">Shopping</h1>
-        <p class="size size-undone" id="size-undone">3</p>
+        </nav>
+        <h1 id="list-name" class="list-name" contenteditable="true" spellcheck="false"></h1>
+        <p class="size size-undone" id="size-undone"></p>
         <ul id="list-undone" class="list list-undone">
             <!-- <li id='idbla1' class="item"><span class="item-text">Eggs</span>
                 <button type='button' class="btn btn-icon delete-btn">Add new item
@@ -45,15 +54,15 @@
 
 
         </ul>
-        <p class="size size-completed" id="size-completed">3</p>
+        <p class="size size-completed" id="size-completed"></p>
         <ul id="list-completed" class="list list-completed">
 
         </ul>
         <div class="add-item-form-container">
-            <form class="form add-item-form" id="add-item-form" action="#">
-                <label class="input-item-label" for="input-item">Add new list item</label>
-                <input id="input-item" class="text-input" minlength="1" maxlength="50" required size="16" name="input-item" type="text">
-                <button id="add-item-btn" class="btn add-item-btn" data-action="addItem" type="submit">Add<span class="add-item-icon">+</span></button>
+            <form class="form add-item-form hidden" id="add-item-form" action="#">
+                <label class="input-label input-item-label" for="input-item">Add new list item</label>
+                <input id="input-item" class="text-input" placeholder="Add new item to list" minlength="1" maxlength="50" required size="16" name="input-item" type="text">
+                <button id="add-item-btn" class="btn add-btn add-item-btn" data-action="addItem" type="submit">Add<span class="add-icon">+</span></button>
             </form>
 
         </div>

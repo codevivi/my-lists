@@ -69,12 +69,13 @@ module.exports = { DEFAULT_LIST: DEFAULT_LIST, LIST_EXAMPLE: LIST_EXAMPLE };
 ////testing development only
 const htmlValidator = require("./src/htmlValidator.js");
 const { LIST_EXAMPLE, DEFAULT_LIST } = require("./defaultList.js");
+const List = require("./src/List.js");
+const Lists = require("./src/Lists.js");
 const Ui = require("./src/Ui.js");
+const myLocalStorage = require("./src/MyLocalStorage");
 ///testing development only
 //const Ui = require("./src/Ui.js");
-const ListItemElement = require("./src/ListItemElement.js");
 
-const myLocalStorage = require("./src/MyLocalStorage");
 //const UiController = require("./src/UiController.js");
 const body = document.querySelector("body");
 const listNameElement = document.getElementById("list-name");
@@ -84,88 +85,55 @@ const listCompletedElement = document.getElementById("list-completed");
 const sizeCompletedElement = document.getElementById("size-completed");
 const itemInputElement = document.getElementById("input-item");
 const itemInputFormElement = document.getElementById("add-item-form");
+const listsElement = document.getElementById("lists");
+const addListFormElement = document.getElementById("add-list-form");
+const inputListElement = document.getElementById("input-list");
 htmlValidator();
-class List {
-  constructor(listFromStorage) {
-    this.name = listFromStorage.name;
-    this.itemsCompleted = new Map(listFromStorage.itemsCompleted);
-    this.itemsUndone = new Map(listFromStorage.itemsUndone);
-  }
-  prepListForStorage() {
-    let listForStorage = {
-      name: this.name,
-      itemsCompleted: [...this.itemsCompleted],
-      itemsUndone: [...this.itemsUndone],
-    };
-    return listForStorage;
-  }
-  save() {
-    myLocalStorage.setItem(this.name, this.prepListForStorage());
-  }
-  addItem(value) {
-    let id = new Date().getTime();
-    let item = { id: id, value: value, completed: false };
-    this.itemsUndone.set(id, item);
-    this.save();
-    console.log(this.itemsUndone);
-    return item;
-  }
 
-  deleteItem(id) {
-    this.itemsUndone.delete(id);
-    this.itemsCompleted.delete(id);
-    console.log(this.itemsUndone);
-    this.save();
-  }
-  toggleItemCompleted(id) {
-    let item = this.itemsUndone.get(id);
-    if (item) {
-      console.log(item);
-      this.itemsUndone.delete(id);
-      item.completed = !item.completed;
-      item.id = new Date().getTime();
-      this.itemsCompleted.set(item.id, item);
-    } else {
-      console.log(item);
-      item = this.itemsCompleted.get(id);
-      this.itemsCompleted.delete(id);
-      item.completed = !item.completed;
-      item.id = new Date().getTime();
-      this.itemsUndone.set(item.id, item);
-    }
-    this.save();
-    return item;
-  }
-}
 myLocalStorage.accept();
-let list = new List(LIST_EXAMPLE);
-let ui = new Ui(list);
-myLocalStorage.setItem(list.name, list.prepListForStorage());
+let list;
+let lists = new Lists();
+lists.render();
+let listFromStorage = myLocalStorage.getItem(myLocalStorage.getItem("selectedListId"));
+if (listFromStorage) {
+  list = new List(listFromStorage);
+  list.render();
+}
+
+//myLocalStorage.setItem(list.name, list.prepListForStorage());
 //populateListElements(list);
 
 const userActions = {
+  addList: function (e) {
+    e.preventDefault();
+    let value = inputListElement.value.trim();
+    console.log(value);
+    if (value.length > 0) {
+      lists.addList(value);
+      list = new List(myLocalStorage.getItem(lists.selectedListId));
+      list.render();
+    }
+  },
+  selectList: function (e) {
+    let id = Number(e.target.dataset.id);
+    lists.selectList(id);
+    list = new List(myLocalStorage.getItem(id));
+    list.render();
+  },
   addItem: function (e) {
     e.preventDefault();
     let value = itemInputElement.value.trim();
     if (value.length > 0) {
-      ui.addItemElement(list.addItem(value));
+      list.addItem(value);
     }
-    itemInputFormElement.reset();
-    itemInputElement.value = "";
-    ui.updateSizeElements();
   },
   deleteItem: function (e) {
     let id = Number(e.target.dataset.id);
     list.deleteItem(id);
-    e.target.parentElement.remove();
-    ui.updateSizeElements();
   },
   toggleItemCompleted: function (e) {
     let id = Number(e.target.dataset.id);
-    let item = list.toggleItemCompleted(id);
-    ui.addItemElement(item);
-    e.target.remove();
-    ui.updateSizeElements();
+    list.toggleItemCompleted(id);
   },
 };
 
@@ -179,37 +147,10 @@ body.addEventListener("click", (e) => {
     }
   }
 });
-// function addItemElement(item) {
-//   if (item.completed) {
-//     listCompletedElement.prepend(new ListItemElement(item));
-//   } else {
-//     listUndoneElement.append(new ListItemElement(item));
-//   }
-// }
-// function updateSizeElements() {
-//   sizeUndoneElement.textContent = `(${list.itemsUndone.size})`;
-//   sizeCompletedElement.textContent = `(${list.itemsCompleted.size})`;
-// }
-// function populateListElements(list) {
-//   list.itemsUndone.forEach((item, key) => listUndoneElement.append(new ListItemElement(item)));
-//   list.itemsCompleted.forEach((item, key) => listCompletedElement.prepend(new ListItemElement(item)));
-//   listNameElement.textContent = list.name;
-//   sizeUndoneElement.textContent = `(${list.itemsUndone.size})`;
-//   sizeCompletedElement.textContent = `(${list.itemsCompleted.size})`;
-// }
-// function resetListElements() {
-//   listUndoneElement.innerHTML = "";
-//   listCompletedElement.innerHTML = "";
-//   sizeUndoneElement.textContent = `(0)`;
-//   sizeCompletedElement.textContent = `(0)`;
-// }
-
-//let list = new List(listExample);
-//let uiController = new UiController(list);
 
 htmlValidator();
 
-},{"./defaultList.js":1,"./src/ListItemElement.js":207,"./src/MyLocalStorage":208,"./src/Ui.js":209,"./src/htmlValidator.js":210}],3:[function(require,module,exports){
+},{"./defaultList.js":1,"./src/List.js":207,"./src/Lists.js":210,"./src/MyLocalStorage":211,"./src/Ui.js":212,"./src/htmlValidator.js":213}],3:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -42025,6 +41966,126 @@ class El {
 module.exports = El;
 
 },{}],207:[function(require,module,exports){
+const ListItemElement = require("./ListItemElement");
+const listNameElement = document.getElementById("list-name");
+const listUndoneElement = document.getElementById("list-undone");
+const sizeUndoneElement = document.getElementById("size-undone");
+const listCompletedElement = document.getElementById("list-completed");
+const sizeCompletedElement = document.getElementById("size-completed");
+const itemInputElement = document.getElementById("input-item");
+const itemInputFormElement = document.getElementById("add-item-form");
+
+const myLocalStorage = require("./MyLocalStorage.js");
+
+class List {
+  constructor(listFromStorage) {
+    this.name = listFromStorage.name;
+    this.id = listFromStorage.id;
+    this.itemsCompleted = new Map(listFromStorage.itemsCompleted);
+    this.itemsUndone = new Map(listFromStorage.itemsUndone);
+    this.itemElements = new Map();
+    List.itemInputFormEl.classList.remove("hidden");
+    List.itemInputEl.focus();
+  }
+  createElements() {
+    this.itemsUndone.forEach((item) => this.itemElements.set(item.id, new ListItemElement(item)));
+    this.itemsCompleted.forEach((item) => this.itemElements.set(item.id, new ListItemElement(item)));
+  }
+
+  render() {
+    List.resetUi();
+    List.nameEl.textContent = this.name;
+    this.createElements();
+    this.itemElements.forEach((element) => {
+      if (!element.dataset.completed) {
+        List.listUndoneEl.append(element);
+      } else {
+        List.listCompletedEl.prepend(element);
+      }
+    });
+    this.updateSizeElements();
+  }
+  updateSizeElements() {
+    List.sizeCompletedEl.textContent = `(${this.itemsCompleted.size})`;
+    List.sizeUndoneEl.textContent = `(${this.itemsUndone.size})`;
+  }
+
+  prepListForStorage() {
+    let listForStorage = {
+      id: this.id,
+      name: this.name,
+      itemsCompleted: [...this.itemsCompleted],
+      itemsUndone: [...this.itemsUndone],
+    };
+    return listForStorage;
+  }
+  save() {
+    myLocalStorage.setItem(this.id, this.prepListForStorage());
+  }
+  addItem(value) {
+    let id = new Date().getTime();
+    let item = { id: id, value: value, completed: false };
+    this.itemsUndone.set(id, item);
+    this.itemElements.set(id, new ListItemElement(item));
+    List.listUndoneEl.append(this.itemElements.get(id));
+    List.itemInputFormEl.reset();
+    List.itemInputEl.value = "";
+    this.updateSizeElements();
+    this.save();
+  }
+  deleteItem(id) {
+    this.itemsUndone.delete(id);
+    this.itemsCompleted.delete(id);
+    this.itemElements.get(id).remove();
+    this.itemElements.delete(id);
+    this.updateSizeElements();
+    this.save();
+  }
+  toggleItemCompleted(id) {
+    let item = this.itemsUndone.get(id) || this.itemsCompleted.get(id);
+    item.completed = !item.completed;
+    item.id = new Date().getTime();
+    this.itemElements.set(item.id, new ListItemElement(item));
+    if (!item.completed) {
+      this.itemsUndone.set(item.id, item);
+      List.listUndoneEl.append(this.itemElements.get(item.id));
+    } else {
+      this.itemsCompleted.set(item.id, item);
+      List.listCompletedEl.prepend(this.itemElements.get(item.id));
+    }
+    this.deleteItem(id);
+  }
+  static resetUi() {
+    List.listUndoneEl.innerHTML = "";
+    List.listCompletedEl.innerHTML = "";
+    List.sizeCompletedEl.textContent = `(0)`;
+    List.sizeUndoneEl.textContent = `(0)`;
+  }
+  static get nameEl() {
+    return listNameElement;
+  }
+  static get listUndoneEl() {
+    return listUndoneElement;
+  }
+  static get sizeUndoneEl() {
+    return sizeUndoneElement;
+  }
+  static get listCompletedEl() {
+    return listCompletedElement;
+  }
+  static get sizeCompletedEl() {
+    return sizeCompletedElement;
+  }
+  static get itemInputEl() {
+    return itemInputElement;
+  }
+  static get itemInputFormEl() {
+    return itemInputFormElement;
+  }
+}
+module.exports = List;
+
+},{"./ListItemElement":208,"./MyLocalStorage.js":211}],208:[function(require,module,exports){
 // const El = require("./ElMaker.js");
 const { span, textNode, li, button } = require("./ElMaker.js");
 
@@ -42081,7 +42142,93 @@ class ListItemElement {
 // module.exports = new Ui(list);
 module.exports = ListItemElement;
 
-},{"./ElMaker.js":206}],208:[function(require,module,exports){
+},{"./ElMaker.js":206}],209:[function(require,module,exports){
+const { span, textNode, li, button } = require("./ElMaker.js");
+const El = require("./ElMaker");
+
+class ListToChooseElement {
+  constructor(list) {
+    const options = {
+      children: [El.textNode(list.name)],
+      attributes: [
+        { name: "class", value: `list-to-choose` },
+        { name: "data-id", value: list.id },
+        { name: "data-action", value: "selectList" },
+      ],
+    };
+    let el = li(options);
+    return el;
+  }
+}
+module.exports = ListToChooseElement;
+
+},{"./ElMaker":206,"./ElMaker.js":206}],210:[function(require,module,exports){
+const List = require("./List");
+const ListToChooseElement = require("./ListToChooseElement");
+const myLocalStorage = require("./MyLocalStorage");
+const listsElement = document.getElementById("lists");
+const addListFormElement = document.getElementById("add-list-form");
+const inputListElement = document.getElementById("input-list");
+
+class Lists {
+  constructor() {
+    this.selectedListId = "";
+    console.log(myLocalStorage.getAllLists());
+    this.lists = myLocalStorage.getAllLists();
+    this.elements = new Map();
+  }
+  createElements() {
+    this.lists.forEach((list) => this.elements.set(list.id, new ListToChooseElement(list)));
+  }
+
+  render() {
+    this.createElements();
+    this.elements.forEach((element) => {
+      Lists.listsEl.append(element);
+    });
+  }
+
+  save() {
+    myLocalStorage.setItem("selectedListId", this.selectedListId);
+  }
+  addList(name) {
+    console.log(this.selectedListId);
+    let id = new Date().getTime();
+    let list = { id: id, name: name, itemsUndone: [], itemsCompleted: [] };
+    this.lists.set(list.id, list);
+    this.elements.set(list.id, new ListToChooseElement(list));
+    Lists.listsEl.append(this.elements.get(id));
+    Lists.addListFormEl.reset();
+    Lists.inputListEl.value = "";
+    myLocalStorage.setItem(list.id, list);
+    this.selectList(id);
+  }
+  deleteList(id) {
+    this.lists.delete(id);
+    this.elements.get(id).remove();
+    this.elements.delete(id);
+    myLocalStorage.remove(id);
+    this.selectedListId = "";
+    ///select another list
+    this.save();
+  }
+  selectList(id) {
+    this.selectedListId = id;
+    this.save();
+  }
+  static get listsEl() {
+    return listsElement;
+  }
+  static get addListFormEl() {
+    return addListFormElement;
+  }
+  static get inputListEl() {
+    return inputListElement;
+  }
+}
+module.exports = Lists;
+
+},{"./List":207,"./ListToChooseElement":209,"./MyLocalStorage":211}],211:[function(require,module,exports){
 "use strict";
 class MyLocalStorage {
   //lowest level (db)
@@ -42118,6 +42265,15 @@ class MyLocalStorage {
     let obj = {};
     Object.keys(localStorage).map((key) => (obj[key] = this.getItem(key)));
     return obj;
+  }
+  getAllLists() {
+    let all = [];
+    Object.keys(localStorage).forEach((key) => {
+      if (key !== "selectedListId" && key !== "isAccepted") {
+        all.push(this.getItem(key));
+      }
+    });
+    return new Map(all.map((list) => [list.id, list]));
   }
   setItem(name, value) {
     if (this.isAccepted) {
@@ -42160,7 +42316,7 @@ function storageAvailable(type) {
 }
 module.exports = new MyLocalStorage();
 
-},{}],209:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 const ListItemElement = require("./ListItemElement");
 const listNameElement = document.getElementById("list-name");
 const listUndoneElement = document.getElementById("list-undone");
@@ -42174,8 +42330,13 @@ class Ui {
   constructor(list) {
     this.list = list;
     Ui.resetListElements();
-    this.list.itemsUndone.forEach((item, key) => listUndoneElement.append(new ListItemElement(item)));
-    this.list.itemsCompleted.forEach((item, key) => listCompletedElement.prepend(new ListItemElement(item)));
+    let itemsUndoneElements = new Map();
+    list.itemsUndone.forEach((item) => itemsUndoneElements.set(item.id, new ListItemElement(item)));
+    console.log(itemsUndoneElements);
+    itemsUndoneElements.forEach((element) => listUndoneElement.append(element));
+    this.itemsUndoneElements = itemsUndoneElements;
+    //this.list.itemsUndone.forEach((item, key) => listUndoneElement.append(new ListItemElement(item)));
+    //this.list.itemsCompleted.forEach((item, key) => listCompletedElement.prepend(new ListItemElement(item)));
     listNameElement.textContent = this.list.name;
     sizeUndoneElement.textContent = `(${this.list.itemsUndone.size})`;
     sizeCompletedElement.textContent = `(${this.list.itemsCompleted.size})`;
@@ -42184,20 +42345,20 @@ class Ui {
     if (item.completed) {
       listCompletedElement.prepend(new ListItemElement(item));
     } else {
-      listUndoneElement.append(new ListItemElement(item));
+      this.itemsUndoneElements.set(new ListItemElement(item));
+      listUndoneElement.append(this.itemsUndoneElements.get(item.id));
+    }
+  }
+  deleteItemElement(item) {
+    if (item.completed) {
+      listCompletedElement.getElementById(`id${item.id}`);
     }
   }
   updateSizeElements() {
     sizeUndoneElement.textContent = `(${this.list.itemsUndone.size})`;
     sizeCompletedElement.textContent = `(${this.list.itemsCompleted.size})`;
   }
-  static populateListElements() {
-    this.list.itemsUndone.forEach((item, key) => listUndoneElement.append(new ListItemElement(item)));
-    this.list.itemsCompleted.forEach((item, key) => listCompletedElement.prepend(new ListItemElement(item)));
-    listNameElement.textContent = this.list.name;
-    sizeUndoneElement.textContent = `(${this.list.itemsUndone.size})`;
-    sizeCompletedElement.textContent = `(${this.list.itemsCompleted.size})`;
-  }
+
   static resetListElements() {
     listUndoneElement.innerHTML = "";
     listCompletedElement.innerHTML = "";
@@ -42226,7 +42387,7 @@ class Ui {
 }
 module.exports = Ui;
 
-},{"./ListItemElement":207}],210:[function(require,module,exports){
+},{"./ListItemElement":208}],213:[function(require,module,exports){
 const validator = require("html-validator");
 const htmlValidator = async function () {
   console.log("validating html");
