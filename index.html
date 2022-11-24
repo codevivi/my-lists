@@ -24,7 +24,7 @@
             </svg>
         </button>
     </div>
-    <div id="list-container" class="list-container">
+    <div id="container" class="container">
         <nav class="choose-list-nav">
             <form class="form add-list-form" id="add-list-form" action="#">
                 <label class="input-label input-list-label" for="input-list">Create new list</label>
@@ -35,37 +35,26 @@
             </ul>
 
         </nav>
-        <h1 id="list-name" class="list-name" contenteditable="true" spellcheck="false"></h1>
-        <p class="size size-undone" id="size-undone"></p>
-        <ul id="list-undone" class="list list-undone">
-            <!-- <li id='idbla1' class="item"><span class="item-text">Eggs</span>
-                <button type='button' class="btn btn-icon delete-btn">Add new item
-                    <span class="delete-btn-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.96 5.83002H5.69V19.19C5.69 20.32 6.61001 21.24 7.74001 21.24H15.9C17.03 21.24 17.95 20.32 17.95 19.19V5.83002H17.96Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M3.78998 5.83002H20.21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M15.08 2.73999H8.91998V5.81999H15.08V2.73999Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M9.94 9.75V17.14" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M14.05 9.75V17.14" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </span>
-                </button>
-            </li> -->
+        <main id="list-container" class="list-container">
+            <div id="list-title-container"> </div>
 
+            <p class="size size-undone" id="size-undone"></p>
+            <ul id="list-undone" class="list list-undone">
 
-        </ul>
-        <p class="size size-completed" id="size-completed"></p>
-        <ul id="list-completed" class="list list-completed">
+            </ul>
+            <p class="size size-completed" id="size-completed"></p>
+            <ul id="list-completed" class="list list-completed">
 
-        </ul>
-        <div class="add-item-form-container">
-            <form class="form add-item-form hidden" id="add-item-form" action="#">
-                <label class="input-label input-item-label" for="input-item">Add new list item</label>
-                <input id="input-item" class="text-input" placeholder="Add new item to list" minlength="1" maxlength="50" required size="16" name="input-item" type="text">
-                <button id="add-item-btn" class="btn add-btn add-item-btn" data-action="addItem" type="submit">Add<span class="add-icon">+</span></button>
-            </form>
+            </ul>
+            <div class="add-item-form-container">
+                <form class="form add-item-form hidden" id="add-item-form" action="#">
+                    <label class="input-label input-item-label" for="input-item">Add new list item</label>
+                    <input id="input-item" class="text-input" placeholder="Add new item to list" minlength="1" maxlength="50" required size="16" name="input-item" type="text">
+                    <button id="add-item-btn" class="btn add-btn add-item-btn" data-action="addItem" type="submit">Add<span class="add-icon">+</span></button>
+                </form>
 
-        </div>
+            </div>
+        </main>
     </div>
 
     <div class="hidden">

@@ -1,27 +1,14 @@
 "use strict";
 ////testing development only
-const htmlValidator = require("./src/htmlValidator.js");
-const { LIST_EXAMPLE, DEFAULT_LIST } = require("./defaultList.js");
+//const htmlValidator = require("./src/htmlValidator.js");
 const List = require("./src/List.js");
 const Lists = require("./src/Lists.js");
-const Ui = require("./src/Ui.js");
-const myLocalStorage = require("./src/MyLocalStorage");
-///testing development only
 //const Ui = require("./src/Ui.js");
-
-//const UiController = require("./src/UiController.js");
+const myLocalStorage = require("./src/MyLocalStorage");
 const body = document.querySelector("body");
-const listNameElement = document.getElementById("list-name");
-const listUndoneElement = document.getElementById("list-undone");
-const sizeUndoneElement = document.getElementById("size-undone");
-const listCompletedElement = document.getElementById("list-completed");
-const sizeCompletedElement = document.getElementById("size-completed");
 const itemInputElement = document.getElementById("input-item");
-const itemInputFormElement = document.getElementById("add-item-form");
-const listsElement = document.getElementById("lists");
-const addListFormElement = document.getElementById("add-list-form");
 const inputListElement = document.getElementById("input-list");
-htmlValidator();
+//htmlValidator();
 
 myLocalStorage.accept();
 let list;
@@ -32,9 +19,6 @@ if (listFromStorage) {
   list = new List(listFromStorage);
   list.render();
 }
-
-//myLocalStorage.setItem(list.name, list.prepListForStorage());
-//populateListElements(list);
 
 const userActions = {
   addList: function (e) {
@@ -52,6 +36,13 @@ const userActions = {
     lists.selectList(id);
     list = new List(myLocalStorage.getItem(id));
     list.render();
+  },
+  deleteList: function (e) {
+    let id = Number(e.target.dataset.id);
+    lists.deleteList(id);
+    List.resetUi();
+    //list.titleElement.remove();
+    list = null;
   },
   addItem: function (e) {
     e.preventDefault();
@@ -81,4 +72,4 @@ body.addEventListener("click", (e) => {
   }
 });
 
-htmlValidator();
+//htmlValidator();

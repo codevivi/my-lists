@@ -4,7 +4,7 @@ const El = require("./ElMaker");
 class ListToChooseElement {
   constructor(list) {
     const options = {
-      children: [El.textNode(list.name)],
+      children: [El.textNode(`${list.name} (${list.itemsUndone.length})`)],
       attributes: [
         { name: "class", value: `list-to-choose` },
         { name: "data-id", value: list.id },

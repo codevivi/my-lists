@@ -13,6 +13,16 @@ class El {
     });
     return span;
   }
+  static h1(options) {
+    let h1 = document.createElement("h1");
+    options.children.forEach((child) => {
+      h1.appendChild(child);
+    });
+    options.attributes.forEach((attr) => {
+      h1.setAttribute(attr.name, attr.value);
+    });
+    return h1;
+  }
   static li(options) {
     let li = document.createElement("li");
     options.children.forEach((child) => {
