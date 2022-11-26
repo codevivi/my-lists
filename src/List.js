@@ -1,12 +1,12 @@
 const ListItemElement = require("./elements/ListItemElement");
 const ListTitleElement = require("./elements/ListTitleElement");
 const ListTitleContainerElement = document.getElementById("list-title-container");
-const listUndoneElement = document.getElementById("list-undone");
+const listUndoneElement = document.getElementById("list-undone"); //ul
 const sizeUndoneElement = document.getElementById("size-undone");
-const listCompletedElement = document.getElementById("list-completed");
+const listCompletedElement = document.getElementById("list-completed"); //ul
 const sizeCompletedElement = document.getElementById("size-completed");
 const itemInputElement = document.getElementById("input-item");
-const itemInputFormElement = document.getElementById("add-item-form");
+const addItemFormElement = document.getElementById("add-item-form");
 const deleteListButtonElement = document.getElementById("delete-list-btn");
 
 const myLocalStorage = require("./MyLocalStorage.js");
@@ -15,13 +15,13 @@ class List {
   constructor(listFromStorage) {
     this.name = listFromStorage.name;
     this.id = listFromStorage.id;
+    this.selected = listFromStorage.selected;
     this.itemsCompleted = new Map(listFromStorage.itemsCompleted);
     this.itemsUndone = new Map(listFromStorage.itemsUndone);
     this.itemElements = new Map();
     this.titleElement = null;
-    List.itemInputFormEl.classList.remove("hidden");
-    List.itemInputEl.focus();
   }
+
   createElements() {
     this.titleElement = new ListTitleElement(this);
     this.itemsUndone.forEach((item) => this.itemElements.set(item.id, new ListItemElement(item)));
@@ -30,7 +30,6 @@ class List {
 
   render() {
     List.resetUi();
-    //List.deleteListButtonEl.dataset.id = this.id;
     this.createElements();
     List.listTitleContainerEl.append(this.titleElement);
     this.itemElements.forEach((element) => {
@@ -51,6 +50,7 @@ class List {
     let listForStorage = {
       id: this.id,
       name: this.name,
+      selected: this.selected,
       itemsCompleted: [...this.itemsCompleted],
       itemsUndone: [...this.itemsUndone],
     };
@@ -85,7 +85,7 @@ class List {
       this.updateSizeElements();
       this.save();
     }
-    List.itemInputFormEl.reset();
+    List.addItemFormEl.reset();
     List.itemInputEl.value = "";
   }
   deleteItem(id) {
@@ -116,6 +116,12 @@ class List {
     List.listCompletedEl.innerHTML = "";
     List.sizeCompletedEl.textContent = ``;
     List.sizeUndoneEl.textContent = ``;
+    List.addItemFormEl.classList.remove("hidden");
+    List.itemInputEl.focus();
+  }
+  clearUi() {
+    List.resetUi();
+    List.addItemFormEl.classList.add("hidden");
   }
   static get listTitleContainerEl() {
     return ListTitleContainerElement;
@@ -138,8 +144,8 @@ class List {
   static get itemInputEl() {
     return itemInputElement;
   }
-  static get itemInputFormEl() {
-    return itemInputFormElement;
+  static get addItemFormEl() {
+    return addItemFormElement;
   }
 }
 module.exports = List;

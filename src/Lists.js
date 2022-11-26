@@ -1,35 +1,50 @@
 const List = require("./List");
-
 const ListToChooseElement = require("./elements/ListToChooseElement");
 const myLocalStorage = require("./MyLocalStorage");
 const listsElement = document.getElementById("lists");
 const addListFormElement = document.getElementById("add-list-form");
 const inputListElement = document.getElementById("input-list");
+const userActions = require("./userActions.js");
 
 class Lists {
   constructor() {
-    this.selectedListId = "";
-    console.log(myLocalStorage.getAllLists());
-    this.lists = myLocalStorage.getAllLists();
-    this.elements = new Map();
+    let allLists = myLocalStorage.getAllLists();
+    let elementsToChooseMap = new Map();
+    let selectedList;
+    allLists.forEach((list) => {
+      if (list.selected) {
+        selectedList = new List(list);
+      } else {
+        elementsToChooseMap.set(list.id, new ListToChooseElement(list));
+      }
+    });
+    this.allLists = allLists;
+    console.log(elementsToChooseMap);
+    this.elementsToChoose = elementsToChooseMap;
+    this.selectedList = selectedList;
   }
-  createElements() {
-    this.lists.forEach((list) => this.elements.set(list.id, new ListToChooseElement(list)));
-  }
-
   render() {
-    this.createElements();
-    this.elements.forEach((element) => {
+    if (this.selectedList) {
+      this.selectedList.render();
+    }
+    console.log(this.elementsToChoose);
+    this.elementsToChoose.forEach((element) => {
       Lists.listsEl.append(element);
     });
   }
 
-  save() {
-    myLocalStorage.setItem("selectedListId", this.selectedListId);
+  unselectCurrentList() {
+    let listToUnSelect = myLocalStorage.getItem(this.selectedList.id);
+    listToUnSelect.selected = false;
+    myLocalStorage.setItem(listToUnSelect.id, listToUnSelect);
+    this.allLists.set(listToUnSelect.id, listToUnSelect);
+    let el = new ListToChooseElement(listToUnSelect);
+    this.elementsToChoose.set(listToUnSelect.id, el);
+    Lists.listsEl.append(el);
   }
   addList(name) {
     let alreadyExistingList = null;
-    this.lists.forEach((list) => {
+    this.allLists.forEach((list) => {
       if (list.name === name) {
         alreadyExistingList = list;
       }
@@ -37,13 +52,11 @@ class Lists {
     if (!alreadyExistingList) {
       let id = new Date().getTime();
       let list = { id: id, name: name, itemsUndone: [], itemsCompleted: [] };
-      this.lists.set(list.id, list);
-      this.elements.set(list.id, new ListToChooseElement(list));
-      Lists.listsEl.append(this.elements.get(id));
+      myLocalStorage.setItem(list.id, list);
+      this.allLists.set(id, list);
+      this.selectList(id);
       Lists.addListFormEl.reset();
       Lists.inputListEl.value = "";
-      myLocalStorage.setItem(list.id, list);
-      this.selectList(id);
     } else {
       this.selectList(alreadyExistingList.id);
     }
@@ -51,22 +64,30 @@ class Lists {
     Lists.inputListEl.value = "";
   }
   deleteList(id) {
-    console.log(id);
-    this.lists.delete(id);
-    this.elements.get(id).remove();
-    this.elements.delete(id);
+    this.allLists.delete(id);
+    this.selectedList.clearUi();
     myLocalStorage.removeItem(id);
-    this.selectedListId = "";
-    ///select another list
-    this.save();
+    this.selectedList = null;
+
+    //select any first list if any left
+    let allListsIterator = this.allLists.entries();
+    let allListsIteratorFirst = allListsIterator.next();
+    if (allListsIteratorFirst.value) {
+      let newListToChoose = allListsIteratorFirst.value[1];
+      this.selectList(newListToChoose.id);
+    }
   }
   selectList(id) {
-    if (this.selectedListId) {
-      this.elements.get(this.selectedListId).classList.remove("hidden");
+    if (this.selectedList) {
+      this.unselectCurrentList();
     }
-    this.selectedListId = id;
-    this.elements.get(this.selectedListId).classList.add("hidden");
-    this.save();
+    let updatedChosenList = myLocalStorage.getItem(id);
+    updatedChosenList.selected = true;
+    this.elementsToChoose.get(id)?.remove();
+    this.elementsToChoose?.delete(id);
+    myLocalStorage.setItem(id, updatedChosenList);
+    this.selectedList = new List(updatedChosenList);
+    this.selectedList.render();
   }
   static get listsEl() {
     return listsElement;
