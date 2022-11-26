@@ -1,15 +1,22 @@
 "use strict";
+
+const acceptLocalStorageModal = document.getElementById("accept-localstorage-modal");
 class MyLocalStorage {
   //lowest level (db)
   constructor() {
     if (!storageAvailable("localStorage")) {
       return { isAccepted: false, error: "localStorage is not available in this browser " };
     }
-    this.isAccepted = localStorage.getItem("isAccepted") ? true : false;
+    let isAccepted = localStorage.getItem("isAccepted") ? true : false;
+    if (!isAccepted) {
+      acceptLocalStorageModal.classList.remove("hidden");
+    }
+    this.isAccepted = isAccepted;
   }
   accept() {
     this.isAccepted = true;
     this.setItem("isAccepted", true);
+    acceptLocalStorageModal.classList.add("hidden");
   }
   refuse() {
     this.isAccepted = false;

@@ -4,7 +4,6 @@ const myLocalStorage = require("./MyLocalStorage");
 const listsElement = document.getElementById("lists");
 const addListFormElement = document.getElementById("add-list-form");
 const inputListElement = document.getElementById("input-list");
-const userActions = require("./userActions.js");
 
 class Lists {
   constructor() {

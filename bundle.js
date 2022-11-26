@@ -3,17 +3,49 @@
 ////testing development only
 const htmlValidator = require("./src/htmlValidator.js");
 const Lists = require("./src/Lists.js");
-const myLocalStorage = require("./src/MyLocalStorage");
 const body = document.querySelector("body");
-const itemInputElement = document.getElementById("input-item");
+const myLocalStorage = require("./src/MyLocalStorage.js");
 const inputListElement = document.getElementById("input-list");
-const userActions = require("./src/userActions.js");
+const itemInputElement = document.getElementById("input-item");
 htmlValidator();
 
-myLocalStorage.accept();
 let lists = new Lists();
 lists.render();
-
+const userActions = {
+  acceptLocalStorage: function (e) {
+    myLocalStorage.accept();
+  },
+  addList: function (e) {
+    e.preventDefault();
+    let value = inputListElement.value.trim();
+    if (value.length > 0) {
+      lists.addList(value);
+    }
+  },
+  selectList: function (e) {
+    let id = Number(e.target.dataset.id);
+    lists.selectList(id);
+  },
+  deleteList: function (e) {
+    let id = Number(e.target.dataset.id);
+    lists.deleteList(id);
+  },
+  addItem: function (e) {
+    e.preventDefault();
+    let value = itemInputElement.value.trim();
+    if (value.length > 0) {
+      lists.selectedList.addItem(value);
+    }
+  },
+  deleteItem: function (e) {
+    let id = Number(e.target.dataset.id);
+    lists.selectedList.deleteItem(id);
+  },
+  toggleItemCompleted: function (e) {
+    let id = Number(e.target.dataset.id);
+    lists.selectedList.toggleItemCompleted(id);
+  },
+};
 body.addEventListener("click", (e) => {
   let action = e.target.dataset.action;
   if (action) {
@@ -27,7 +59,7 @@ body.addEventListener("click", (e) => {
 
 htmlValidator();
 
-},{"./src/Lists.js":206,"./src/MyLocalStorage":207,"./src/htmlValidator.js":213,"./src/userActions.js":214}],2:[function(require,module,exports){
+},{"./src/Lists.js":206,"./src/MyLocalStorage.js":207,"./src/htmlValidator.js":213}],2:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -41963,7 +41995,6 @@ const myLocalStorage = require("./MyLocalStorage");
 const listsElement = document.getElementById("lists");
 const addListFormElement = document.getElementById("add-list-form");
 const inputListElement = document.getElementById("input-list");
-const userActions = require("./userActions.js");
 
 class Lists {
   constructor() {
@@ -42060,19 +42091,26 @@ class Lists {
 }
 module.exports = Lists;
 
-},{"./List":205,"./MyLocalStorage":207,"./elements/ListToChooseElement":212,"./userActions.js":214}],207:[function(require,module,exports){
+},{"./List":205,"./MyLocalStorage":207,"./elements/ListToChooseElement":212}],207:[function(require,module,exports){
 "use strict";
+
+const acceptLocalStorageModal = document.getElementById("accept-localstorage-modal");
 class MyLocalStorage {
   //lowest level (db)
   constructor() {
     if (!storageAvailable("localStorage")) {
       return { isAccepted: false, error: "localStorage is not available in this browser " };
     }
-    this.isAccepted = localStorage.getItem("isAccepted") ? true : false;
+    let isAccepted = localStorage.getItem("isAccepted") ? true : false;
+    if (!isAccepted) {
+      acceptLocalStorageModal.classList.remove("hidden");
+    }
+    this.isAccepted = isAccepted;
   }
   accept() {
     this.isAccepted = true;
     this.setItem("isAccepted", true);
+    acceptLocalStorageModal.classList.add("hidden");
   }
   refuse() {
     this.isAccepted = false;
@@ -42331,40 +42369,4 @@ const htmlValidator = async function () {
 };
 module.exports = htmlValidator;
 
-},{"html-validator":136}],214:[function(require,module,exports){
-const userActions = {
-  addList: function (e) {
-    e.preventDefault();
-    let value = inputListElement.value.trim();
-    console.log(value);
-    if (value.length > 0) {
-      lists.addList(value);
-    }
-  },
-  selectList: function (e) {
-    let id = Number(e.target.dataset.id);
-    lists.selectList(id);
-  },
-  deleteList: function (e) {
-    let id = Number(e.target.dataset.id);
-    lists.deleteList(id);
-  },
-  addItem: function (e) {
-    e.preventDefault();
-    let value = itemInputElement.value.trim();
-    if (value.length > 0) {
-      lists.selectedList.addItem(value);
-    }
-  },
-  deleteItem: function (e) {
-    let id = Number(e.target.dataset.id);
-    lists.selectedList.deleteItem(id);
-  },
-  toggleItemCompleted: function (e) {
-    let id = Number(e.target.dataset.id);
-    lists.selectedList.toggleItemCompleted(id);
-  },
-};
-module.exports = userActions;
-
-},{}]},{},[1]);
+},{"html-validator":136}]},{},[1]);

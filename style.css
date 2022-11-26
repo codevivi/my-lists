@@ -14,6 +14,53 @@ body {
     background-color: #18181A;
 }
 
+.modal {
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+    padding: 1.5em;
+    width: 100vw;
+    height: 100%;
+
+    background-color: white;
+    color: #18181A;
+}
+
+.modal-title {
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+}
+
+.modal-text {
+    max-width: 500px;
+    margin: 0.5em 0;
+    text-align: left;
+    letter-spacing: 0.1em;
+    color: #18181A;
+}
+
+.modal-btn {
+    margin: 1em;
+    padding: 1em;
+
+    color: white;
+    background-color: #3B3B71;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.modal-btn:focus,
+.modal-btn:hover {
+    background-color: #6161de;
+}
+
+
 .more-settings {
     position: sticky;
     top: 0;
