@@ -1,2 +1,4 @@
-*.svg
-*.fig-
+savedFiles
+node_modules/*
+node_modules
+dist/bundle.js
