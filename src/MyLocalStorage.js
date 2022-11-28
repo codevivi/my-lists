@@ -2,7 +2,6 @@
 
 const acceptLocalStorageModal = document.getElementById("accept-localstorage-modal");
 class MyLocalStorage {
-  //lowest level (db)
   constructor() {
     if (!storageAvailable("localStorage")) {
       return { isAccepted: false, error: "localStorage is not available in this browser " };

@@ -87,6 +87,7 @@ class List {
     }
     List.addItemFormEl.reset();
     List.itemInputEl.value = "";
+    List.itemInputEl.focus();
   }
   deleteItem(id) {
     this.itemsUndone.delete(id);

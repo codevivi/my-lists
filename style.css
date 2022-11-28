@@ -31,6 +31,7 @@ body {
     color: #18181A;
 }
 
+
 .modal-title {
     margin-bottom: 2rem;
     font-size: 1.4rem;
@@ -53,11 +54,32 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
+    z-index: 9;
 }
 
 .modal-btn:focus,
 .modal-btn:hover {
     background-color: #6161de;
+}
+
+
+
+.import-form {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #6161de;
+    padding: 1em;
+}
+
+.import-form label {
+    color: #6161de;
+    font-size: 0.8em;
+}
+
+.file-input {
+    color: #6161de;
+    padding: 1em;
 }
 
 
@@ -93,6 +115,10 @@ body {
 .more-btn:focus,
 .more-btn:hover {
     border-top: 1px solid #545483;
+}
+
+#more-icon {
+    pointer-events: none;
 }
 
 
@@ -357,6 +383,7 @@ body {
 
     font-size: 2em;
     text-indent: 0.2em;
+    pointer-events: none;
 }
 
 .hidden {

@@ -18,7 +18,6 @@ class Lists {
       }
     });
     this.allLists = allLists;
-    console.log(elementsToChooseMap);
     this.elementsToChoose = elementsToChooseMap;
     this.selectedList = selectedList;
   }
@@ -87,6 +86,9 @@ class Lists {
     myLocalStorage.setItem(id, updatedChosenList);
     this.selectedList = new List(updatedChosenList);
     this.selectedList.render();
+  }
+  static clearUi() {
+    this.listsEl.innerHTML = "";
   }
   static get listsEl() {
     return listsElement;

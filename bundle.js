@@ -7,10 +7,16 @@ const body = document.querySelector("body");
 const myLocalStorage = require("./src/MyLocalStorage.js");
 const inputListElement = document.getElementById("input-list");
 const itemInputElement = document.getElementById("input-item");
+const modalMoreElement = document.getElementById("modal-more");
+const importForm = document.getElementById("import-form");
+
+const fileInput = document.getElementById("file-input");
+const { saveToFile, getFromFile } = require("./src/fileStorage.js");
 htmlValidator();
 
 let lists = new Lists();
 lists.render();
+
 const userActions = {
   acceptLocalStorage: function (e) {
     myLocalStorage.accept();
@@ -31,6 +37,7 @@ const userActions = {
     lists.deleteList(id);
   },
   addItem: function (e) {
+    console.log(e);
     e.preventDefault();
     let value = itemInputElement.value.trim();
     if (value.length > 0) {
@@ -44,6 +51,31 @@ const userActions = {
   toggleItemCompleted: function (e) {
     let id = Number(e.target.dataset.id);
     lists.selectedList.toggleItemCompleted(id);
+  },
+  openMoreModal: function (e) {
+    modalMoreElement.classList.remove("hidden");
+  },
+  exitMoreModal: function (e) {
+    modalMoreElement.classList.add("hidden");
+  },
+  saveToFile: function (e) {
+    saveToFile("my_lists", myLocalStorage.getAll());
+    this.exitMoreModal();
+  },
+  restoreFromFile: async function (e) {
+    e.preventDefault();
+    let file = fileInput.files[0];
+    let data = await getFromFile(file);
+    myLocalStorage.clear();
+    for (let prop in data) {
+      console.log(prop);
+      myLocalStorage.setItem(prop, data[prop]);
+    }
+    importForm.reset();
+    this.exitMoreModal();
+    Lists.clearUi();
+    lists = new Lists();
+    lists.render();
   },
 };
 body.addEventListener("click", (e) => {
@@ -59,7 +91,7 @@ body.addEventListener("click", (e) => {
 
 htmlValidator();
 
-},{"./src/Lists.js":206,"./src/MyLocalStorage.js":207,"./src/htmlValidator.js":213}],2:[function(require,module,exports){
+},{"./src/Lists.js":206,"./src/MyLocalStorage.js":207,"./src/fileStorage.js":213,"./src/htmlValidator.js":214}],2:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -41925,6 +41957,7 @@ class List {
     }
     List.addItemFormEl.reset();
     List.itemInputEl.value = "";
+    List.itemInputEl.focus();
   }
   deleteItem(id) {
     this.itemsUndone.delete(id);
@@ -42009,7 +42042,6 @@ class Lists {
       }
     });
     this.allLists = allLists;
-    console.log(elementsToChooseMap);
     this.elementsToChoose = elementsToChooseMap;
     this.selectedList = selectedList;
   }
@@ -42079,6 +42111,9 @@ class Lists {
     this.selectedList = new List(updatedChosenList);
     this.selectedList.render();
   }
+  static clearUi() {
+    this.listsEl.innerHTML = "";
+  }
   static get listsEl() {
     return listsElement;
   }
@@ -42096,7 +42131,6 @@ module.exports = Lists;
 
 const acceptLocalStorageModal = document.getElementById("accept-localstorage-modal");
 class MyLocalStorage {
-  //lowest level (db)
   constructor() {
     if (!storageAvailable("localStorage")) {
       return { isAccepted: false, error: "localStorage is not available in this browser " };
@@ -42350,6 +42384,55 @@ class ListToChooseElement {
 module.exports = ListToChooseElement;
 
 },{"./ElMaker":209,"./ElMaker.js":209}],213:[function(require,module,exports){
+const fileIdentifier = "list#39"; //will insert this at the beginning of the file when saving to fi
+
+module.exports.getFromFile = function getFromFile(file) {
+  if (file) {
+    if (!file.name.endsWith(".txt")) {
+      alert("Wrong file type.");
+      inputFile.value = "";
+      return;
+    }
+
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = function () {
+        let result = reader.result;
+        if (!result.startsWith(fileIdentifier)) {
+          alert("Wrong file type.Can only open files saved with this application.");
+          inputFile.value = "";
+          return;
+        }
+        result = result.substring(fileIdentifier.length);
+        result = JSON.parse(result);
+        resolve(result);
+        reader.onerror = reject;
+      };
+    });
+  }
+};
+
+function createDownloadFile(filename, text) {
+  const element = document.createElement("a");
+  element.innerText = "download";
+  element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+  element.setAttribute("download", filename);
+  element.style.display = "none";
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+module.exports.saveToFile = function downLoadFile(name, content) {
+  let today = new Date();
+  let month = today.getMonth() + 1;
+  let date = `${today.getFullYear().toString()}-${month.toString()}-${today.getDate().toString()}_T_${today.getHours().toString()}-${today.getMinutes().toString()}-${today.getSeconds().toString()}`;
+  let fileName = `My_lists_${date}.txt`;
+  createDownloadFile(fileName, fileIdentifier + JSON.stringify(content));
+};
+
+},{}],214:[function(require,module,exports){
 const validator = require("html-validator");
 const htmlValidator = async function () {
   console.log("validating html");
