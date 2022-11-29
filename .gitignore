@@ -1,2 +1,3 @@
 *.svg
-*.fig-
+node_modules
+
