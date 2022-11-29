@@ -25,7 +25,6 @@ class Lists {
     if (this.selectedList) {
       this.selectedList.render();
     }
-    console.log(this.elementsToChoose);
     this.elementsToChoose.forEach((element) => {
       Lists.listsEl.append(element);
     });

@@ -1,6 +1,5 @@
 "use strict";
 ////testing development only
-const htmlValidator = require("./src/htmlValidator.js");
 const Lists = require("./src/Lists.js");
 const body = document.querySelector("body");
 const myLocalStorage = require("./src/MyLocalStorage.js");
@@ -11,8 +10,6 @@ const importForm = document.getElementById("import-form");
 
 const fileInput = document.getElementById("file-input");
 const { saveToFile, getFromFile } = require("./src/fileStorage.js");
-htmlValidator();
-
 let lists = new Lists();
 lists.render();
 
@@ -36,7 +33,6 @@ const userActions = {
     lists.deleteList(id);
   },
   addItem: function (e) {
-    console.log(e);
     e.preventDefault();
     let value = itemInputElement.value.trim();
     if (value.length > 0) {
@@ -67,7 +63,6 @@ const userActions = {
     let data = await getFromFile(file);
     myLocalStorage.clear();
     for (let prop in data) {
-      console.log(prop);
       myLocalStorage.setItem(prop, data[prop]);
     }
     importForm.reset();
@@ -87,5 +82,3 @@ body.addEventListener("click", (e) => {
     }
   }
 });
-
-htmlValidator();

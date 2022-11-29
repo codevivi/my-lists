@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 *.svg
 node_modules
 
+=======
+savedFiles
+node_modules/*
+node_modules
+dist/bundle.js
+>>>>>>> trywebpack

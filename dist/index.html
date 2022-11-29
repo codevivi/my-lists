@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="new Description">
+    <meta name="keywords" content="list all keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+    <link rel="manifest" href="./favicons/site.webmanifest">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>List</title>
+</head>
+
+<body>
+    <div id="accept-localstorage-modal" class="modal hidden">
+        <h1 class="modal-title">Create and save Your lists (To-Do, Shopping lists...)</h1>
+        <p class="modal-text">
+            This website works by saving lists to Your browsers local storage.
+        </p>
+        <p class="modal-text">
+            You can clear your storage
+            at any time from browser settings.
+            Just don't forget to copy or save Your lists to a text file.
+        </p>
+        <p class="modal-text">
+            Do not keep sensitive/private information in Your lists.
+        </p>
+        <p class="modal-text">
+            By proceeding You accept to store your lists to Your browsers local storage.
+        </p>
+        <button type="button" id="accept-localstorage-btn" class="btn modal-btn" data-action="acceptLocalStorage">OK</button>
+    </div>
+    <div id="modal-more" class="modal-more modal hidden">
+        <button id="exit-more-modal" data-action="exitMoreModal" type="button" class="modal-btn btn-exit-more-modal">EXIT</button>
+        <button class="modal-btn" id="save-to-file-btn" data-action="saveToFile" type='button'>Save all lists to file</button>
+        <form id="import-form" class='import-form' action="#">
+            <label for="file-input">This will delete all your current lists and replace them with lists from file</label>
+            <input class="file-input" type="file" id="file-input" />
+            <button class="modal-btn" id='submit-import' data-action="restoreFromFile" type="submit">Restore from selected file</button>
+        </form>
+    </div>
+    <div class="more-settings">
+        <button class="more-btn btn btn-icon" data-action="openMoreModal" tabindex="0" id="more-btn">
+            <svg id="more-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.19 14.06C20.3277 14.06 21.25 13.1377 21.25 12C21.25 10.8623 20.3277 9.94 19.19 9.94C18.0523 9.94 17.13 10.8623 17.13 12C17.13 13.1377 18.0523 14.06 19.19 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 14.06C13.1377 14.06 14.06 13.1377 14.06 12C14.06 10.8623 13.1377 9.94 12 9.94C10.8623 9.94 9.94 10.8623 9.94 12C9.94 13.1377 10.8623 14.06 12 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.81 14.06C5.9477 14.06 6.87 13.1377 6.87 12C6.87 10.8623 5.9477 9.94 4.81 9.94C3.67229 9.94 2.75 10.8623 2.75 12C2.75 13.1377 3.67229 14.06 4.81 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+    <div id="container" class="container">
+        <nav class="choose-list-nav">
+            <form class="form add-list-form" id="add-list-form" action="#">
+                <label class="input-label input-list-label" for="input-list">Create new list</label>
+                <input id="input-list" class="text-input" placeholder="Create new list" minlength="1" maxlength="50" required size="16" name="input-list" type="text">
+                <button id="add-list-btn" class="btn add-btn add-list-btn" data-action="addList" type="submit">Add<span class="add-icon">+</span></button>
+            </form>
+            <ul id='lists' class="lists">
+            </ul>
+
+        </nav>
+        <main id="list-container" class="list-container">
+            <div id="list-title-container"> </div>
+
+            <p class="size size-undone" id="size-undone"></p>
+            <ul id="list-undone" class="list list-undone">
+
+            </ul>
+            <p class="size size-completed" id="size-completed"></p>
+            <ul id="list-completed" class="list list-completed">
+
+            </ul>
+            <div class="add-item-form-container">
+                <form class="form add-item-form hidden" id="add-item-form" action="#">
+                    <label class="input-label input-item-label" for="input-item">Add new list item</label>
+                    <input id="input-item" class="text-input" placeholder="Add new item to list" minlength="1" maxlength="50" required size="16" name="input-item" type="text">
+                    <button id="add-item-btn" class="btn add-btn add-item-btn" data-action="addItem" type="submit">Add<span class="add-icon">+</span></button>
+                </form>
+
+            </div>
+        </main>
+    </div>
+
+    <div class="hidden">
+        <svg id='bin-svg' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.96 5.83002H5.69V19.19C5.69 20.32 6.61001 21.24 7.74001 21.24H15.9C17.03 21.24 17.95 20.32 17.95 19.19V5.83002H17.96Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M3.78998 5.83002H20.21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15.08 2.73999H8.91998V5.81999H15.08V2.73999Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M9.94 9.75V17.14" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14.05 9.75V17.14" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+    <script src="bundle.js"> </script>
+</body>
+
+</html>
