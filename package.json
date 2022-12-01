@@ -5,14 +5,31 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config=webpack.config.prod.js",
+    "build-dev": "webpack --config=webpack.config.dev.js",
+    "start": "webpack-dev-server --config=webpack.config.dev.js --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "vi",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.7.2",
+    "favicons-webpack-plugin": "^6.0.0",
+    "html-inline-css-webpack-plugin": "^1.11.1",
+    "html-inline-script-webpack-plugin": "^3.1.0",
     "html-validator": "^6.0.1",
+    "html-webpack-inline-source-plugin": "^0.0.10",
+    "html-webpack-plugin": "^5.5.0",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.0"
+    "webpack-bundle-analyzer": "^4.7.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
   }
 }

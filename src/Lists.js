@@ -4,9 +4,10 @@ const myLocalStorage = require("./MyLocalStorage");
 const listsElement = document.getElementById("lists");
 const addListFormElement = document.getElementById("add-list-form");
 const inputListElement = document.getElementById("input-list");
-
+console.log("vaje");
 class Lists {
   constructor() {
+    console.log("in lists constructor");
     let allLists = myLocalStorage.getAllLists();
     let elementsToChooseMap = new Map();
     let selectedList;
@@ -23,6 +24,8 @@ class Lists {
   }
   render() {
     if (this.selectedList) {
+      console.log(this.selectedList);
+      console.log("trying to render selected list");
       this.selectedList.render();
     }
     this.elementsToChoose.forEach((element) => {

@@ -1,6 +1,5 @@
 const ListItemElement = require("./elements/ListItemElement");
 const ListTitleElement = require("./elements/ListTitleElement");
-const ListTitleContainerElement = document.getElementById("list-title-container");
 const listUndoneElement = document.getElementById("list-undone"); //ul
 const sizeUndoneElement = document.getElementById("size-undone");
 const listCompletedElement = document.getElementById("list-completed"); //ul
@@ -9,6 +8,8 @@ const itemInputElement = document.getElementById("input-item");
 const addItemFormElement = document.getElementById("add-item-form");
 const deleteListButtonElement = document.getElementById("delete-list-btn");
 
+const listTitleContainerElement = document.getElementById("list-title-container");
+console.log(listTitleContainerElement);
 const myLocalStorage = require("./MyLocalStorage.js");
 
 class List {
@@ -125,7 +126,7 @@ class List {
     List.addItemFormEl.classList.add("hidden");
   }
   static get listTitleContainerEl() {
-    return ListTitleContainerElement;
+    return listTitleContainerElement;
   }
   static get deleteListButtonEl() {
     return deleteListButtonElement;
