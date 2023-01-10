@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HtmlInlineScriptPlugin = require("html-inline-script-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 //const FaviconWebPackPlugin = require("favicons-webpack-plugin");
 module.exports = {
   entry: {
@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
+    //filename: "[name].js",
     clean: true,
     assetModuleFilename: "[name][ext]",
   },
@@ -19,6 +20,10 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.js$/,
@@ -42,6 +47,9 @@ module.exports = {
       filename: "index.html",
       template: "src/index.html",
     }),
-    // new HtmlInlineScriptPlugin(),
+    // new MiniCssExtractPlugin({
+    //   filename: "style.css",
+    // }),
+    //new HtmlInlineScriptPlugin(),
   ],
 };

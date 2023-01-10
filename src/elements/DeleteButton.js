@@ -9,6 +9,7 @@ class DeleteButton {
       attributes: [
         { name: "class", value: "delete-btn" },
         { name: "type", value: "button" },
+        { name: "tabindex", value: "-1" },
         { name: "data-action", value: actionString },
         { name: "data-id", value: thingToDeleteId },
         //{ name: "data-completed", value: item.completed ? "true" : "" },

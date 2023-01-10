@@ -19,92 +19,119 @@ $bg: #8D95F2;
     padding: 0;
 }
 
+html {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+}
+
 body {
-    position: relative;
-    margin-top: -3em;
+    //position: relative;
     width: 100%;
     height: 100%;
-
+    padding-bottom: 1em;
     font-family: 'Poppins', sans-serif;
     background-color: $accent;
 }
 
 .container {
-    height: auto;
-    width: 100vw;
-    max-width: 600px;
-    min-height: 100vh;
-    margin: auto;
-    padding: 2em 2.5em 4em 2.5em;
     position: relative;
+
+
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    overflow-y: scroll;
+    margin: 0 auto;
+    padding: 0 3em 4em 3em;
+    margin-bottom: 1em;
 
     background-color: $light;
     color: $dark;
+
+    & .more-btn {
+        position: sticky;
+        display: block;
+        top: 1em;
+        left: 100%;
+        margin-right: -3em;
+        z-index: 103;
+        width: 2rem;
+        height: 2rem;
+
+        outline: none;
+        border: none;
+
+        background-color: $light;
+        cursor: pointer;
+
+        & svg {
+            pointer-events: none;
+        }
+    }
 }
 
-.modal {
-    position: absolute;
-    z-index: 100;
+.list-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    min-height: 70vh;
+
+}
+
+
+.list-name-text {
+    display: block;
+    width: 6em;
+    max-width: 6em;
+    word-break: break-word;
+
+}
+
+.add-item-form-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    //flex: 1;
+    width: 100%;
+
+    background-color: transparent;
+}
+
+
+
+.modal {
+    height: 100vh;
+
+    position: absolute;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+
     align-items: center;
     justify-content: center;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 2em;
+    padding: 3em;
 
     background-color: $light;
     color: $dark;
 }
 
 .modal-more {
-    z-index: 98;
+    z-index: 102;
 }
 
-.more-settings {
-    z-index: 99;
-}
 
-.more-settings {
-    position: sticky;
-    top: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    width: 100%;
-    max-width: 600px;
-    height: 3em;
-    margin: auto;
-    padding-right: 0.4em;
-
-    background-color: transparent;
-}
-
-.more-btn {
-    width: 2rem;
-    height: 2rem;
-
-    outline: none;
-    border: none;
-
-    background-color: $light;
-
-    cursor: pointer;
-}
 
 .more-btn:focus,
 .more-btn:hover {
+
     border-top: 1px solid $accent;
 }
-
-#more-icon {
-    pointer-events: none;
-}
-
 
 .modal-title {
     margin-bottom: 2rem;
@@ -119,6 +146,7 @@ body {
 .modal-btn {
     margin: 1em;
     padding: 1em;
+    width: 100%;
 
     color: white;
     background-color: $accent;
@@ -136,21 +164,27 @@ body {
 
 
 .import-form {
+    width: 100%;
     margin-top: 2em;
     display: flex;
+    padding-top: 1em;
+    align-items: center;
     flex-direction: column;
     border: 1px solid $accent;
-    padding: 1em;
 }
 
 .import-form label {
+    padding: 1em;
     color: $accent;
     font-size: 0.8em;
+
+
 }
 
 .file-input {
     color: $accent;
     padding: 1em;
+    width: 100%;
 }
 
 
@@ -240,12 +274,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 1;
 
     margin-bottom: 1em;
 
     background-color: transparent;
     border-bottom: 1px dashed $accent;
     cursor: pointer;
+}
+
+.item:focus {
+    color: $focus;
+    outline: none;
 }
 
 .completed {
@@ -299,19 +339,7 @@ body {
     pointer-events: none;
 }
 
-.add-item-form-container {
-    position: fixed;
-    left: 0;
-    bottom: 0;
 
-    width: 100%;
-
-    background-color: transparent;
-}
-
-.choose-list-nav {
-    padding: 0;
-}
 
 .form {
     position: relative;
@@ -335,6 +363,8 @@ body {
     padding: 0;
 }
 
+
+
 .text-input {
     flex: 1;
     height: 2.5em;
@@ -342,6 +372,7 @@ body {
     text-indent: 0.5em;
     outline: none;
 }
+
 
 .input-label {
     position: absolute;

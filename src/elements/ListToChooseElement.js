@@ -8,6 +8,7 @@ class ListToChooseElement {
       attributes: [
         { name: "class", value: `list-to-choose` },
         { name: "data-id", value: list.id },
+        { name: "tabindex", value: "0" },
         { name: "data-action", value: "selectList" },
       ],
     };

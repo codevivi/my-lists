@@ -10,12 +10,19 @@ class ListItemElement {
       attributes: [
         { name: "class", value: `item ${item.completed ? "completed" : ""}` },
         { name: "id", value: "id" + item.id },
+        { name: "tabindex", value: 0 },
         { name: "data-id", value: item.id },
         { name: "data-completed", value: item.completed ? "true" : "" },
         { name: "data-action", value: "toggleItemCompleted" },
       ],
     };
     let el = li(options);
+    el.addEventListener("focus", () => {
+      deleteButton.setAttribute("tabindex", "0");
+    });
+    el.addEventListener("blur", () => {
+      deleteButton.setAttribute("tabindex", "-1");
+    });
     return el;
   }
   static #createItemTextElement(text) {

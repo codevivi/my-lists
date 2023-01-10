@@ -9,6 +9,9 @@ window.onload = function () {
   const itemInputElement = document.getElementById("input-item");
   const modalMoreElement = document.getElementById("modal-more");
   const importForm = document.getElementById("import-form");
+  const moreButton = document.getElementById("more-btn");
+  const moreIcon = document.getElementById("more-icon");
+  const closeIcon = document.getElementById("close-icon");
 
   const fileInput = document.getElementById("file-input");
   const { saveToFile, getFromFile } = require("./fileStorage.js");
@@ -51,9 +54,15 @@ window.onload = function () {
     },
     openMoreModal: function (e) {
       modalMoreElement.classList.remove("hidden");
+      moreButton.setAttribute("data-action", "exitMoreModal");
+      moreIcon.classList.add("hidden");
+      closeIcon.classList.remove("hidden");
     },
     exitMoreModal: function (e) {
       modalMoreElement.classList.add("hidden");
+      moreButton.setAttribute("data-action", "openMoreModal");
+      moreIcon.classList.remove("hidden");
+      closeIcon.classList.add("hidden");
     },
     saveToFile: function (e) {
       saveToFile("my_lists", myLocalStorage.getAll());
@@ -83,6 +92,20 @@ window.onload = function () {
         userActions[action](e);
       } catch (e) {
         console.log(e);
+      }
+    }
+  });
+  body.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      console.log(e.type);
+      let action = document.activeElement.dataset.action;
+      if (action) {
+        e.preventDefault();
+        try {
+          userActions[action](e);
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
   });

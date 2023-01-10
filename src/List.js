@@ -22,11 +22,17 @@ class List {
     this.itemElements = new Map();
     this.titleElement = null;
   }
+  static focusHistory = [];
 
   createElements() {
     this.titleElement = new ListTitleElement(this);
     this.itemsUndone.forEach((item) => this.itemElements.set(item.id, new ListItemElement(item)));
     this.itemsCompleted.forEach((item) => this.itemElements.set(item.id, new ListItemElement(item)));
+    this.itemElements.forEach((el) =>
+      el.addEventListener("focus", (e) => {
+        List.focusHistory = el;
+      })
+    );
   }
 
   render() {
@@ -82,6 +88,7 @@ class List {
       let item = { id: id, value: value, completed: false };
       this.itemsUndone.set(id, item);
       this.itemElements.set(id, new ListItemElement(item));
+      //      this.itemsElements.get(id).addEventListener("focus", this.focusHistory.push(this));
       List.listUndoneEl.append(this.itemElements.get(id));
       this.updateSizeElements();
       this.save();
@@ -90,6 +97,7 @@ class List {
     List.itemInputEl.value = "";
     List.itemInputEl.focus();
   }
+
   deleteItem(id) {
     this.itemsUndone.delete(id);
     this.itemsCompleted.delete(id);
@@ -97,6 +105,9 @@ class List {
     this.itemElements.delete(id);
     this.updateSizeElements();
     this.save();
+    List.focusHistory.pop();
+    List.focusHistory[List.focusHistory.length - 1].focus();
+    console.log(List.focusHistory, "focus history");
   }
   toggleItemCompleted(id) {
     let item = this.itemsUndone.get(id) || this.itemsCompleted.get(id);

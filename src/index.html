@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="new Description">
     <meta name="keywords" content="list all keywords">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- 
     <link rel="apple-touch-icon" sizes="180x180" href="./resources/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./resources/favicons/favicon-32x32.png">
@@ -16,26 +16,10 @@
 
 <body>
 
-    <div id="modal-more" class="modal-more modal hidden">
-        <button id="exit-more-modal" data-action="exitMoreModal" type="button" class="modal-btn btn-exit-more-modal">EXIT</button>
-        <button class="modal-btn" id="save-to-file-btn" data-action="saveToFile" type='button'>Save all lists to file</button>
-        <form id="import-form" class='import-form' action="#">
-            <label for="file-input">This will delete all your current lists and replace them with lists from file</label>
-            <input class="file-input" type="file" id="file-input" />
-            <button class="modal-btn" id='submit-import' data-action="restoreFromFile" type="submit">Restore from selected file</button>
-        </form>
-    </div>
-    <div class="more-settings">
-        <button class="more-btn btn btn-icon" data-action="openMoreModal" tabindex="0" id="more-btn">
-            <svg id="more-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19.19 14.06C20.3277 14.06 21.25 13.1377 21.25 12C21.25 10.8623 20.3277 9.94 19.19 9.94C18.0523 9.94 17.13 10.8623 17.13 12C17.13 13.1377 18.0523 14.06 19.19 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M12 14.06C13.1377 14.06 14.06 13.1377 14.06 12C14.06 10.8623 13.1377 9.94 12 9.94C10.8623 9.94 9.94 10.8623 9.94 12C9.94 13.1377 10.8623 14.06 12 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4.81 14.06C5.9477 14.06 6.87 13.1377 6.87 12C6.87 10.8623 5.9477 9.94 4.81 9.94C3.67229 9.94 2.75 10.8623 2.75 12C2.75 13.1377 3.67229 14.06 4.81 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </button>
-    </div>
+
+
     <div id="container" class="container">
-        <div id="accept-localstorage-modal" class="modal hidden">
+        <div id="accept-localstorage-modal" class="modal modal-accept-localstorage hidden">
             <h1 class="modal-title">Create and save Your lists (To-Do, Shopping lists...)</h1>
             <p class="modal-text">
                 This website works by saving lists to Your browsers local storage.
@@ -53,6 +37,27 @@
             </p>
             <button type="button" id="accept-localstorage-btn" class="btn modal-btn" data-action="acceptLocalStorage">OK</button>
         </div>
+        <button class="more-btn btn-icon" data-action="openMoreModal" tabindex="0" id="more-btn">
+            <svg id="more-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.19 14.06C20.3277 14.06 21.25 13.1377 21.25 12C21.25 10.8623 20.3277 9.94 19.19 9.94C18.0523 9.94 17.13 10.8623 17.13 12C17.13 13.1377 18.0523 14.06 19.19 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 14.06C13.1377 14.06 14.06 13.1377 14.06 12C14.06 10.8623 13.1377 9.94 12 9.94C10.8623 9.94 9.94 10.8623 9.94 12C9.94 13.1377 10.8623 14.06 12 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.81 14.06C5.9477 14.06 6.87 13.1377 6.87 12C6.87 10.8623 5.9477 9.94 4.81 9.94C3.67229 9.94 2.75 10.8623 2.75 12C2.75 13.1377 3.67229 14.06 4.81 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg id="close-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M16.945 15.66C17.305 16.02 17.305 16.58 16.945 16.94C16.765 17.12 16.545 17.2 16.305 17.2C16.065 17.2 15.845 17.12 15.665 16.94L12.005 13.28L8.345 16.94C8.165 17.12 7.94501 17.2 7.70501 17.2C7.46501 17.2 7.24502 17.12 7.06502 16.94C6.70502 16.58 6.70502 16.02 7.06502 15.66L10.725 12L7.06502 8.33999C6.70502 7.97999 6.70502 7.41999 7.06502 7.05999C7.42502 6.69999 7.985 6.69999 8.345 7.05999L12.005 10.72L15.665 7.05999C16.025 6.69999 16.585 6.69999 16.945 7.05999C17.305 7.41999 17.305 7.97999 16.945 8.33999L13.285 12L16.945 15.66Z"
+                    fill="black" />
+            </svg>
+        </button>
+        <div id="modal-more" class="modal-more modal hidden">
+            <button class="modal-btn" id="save-to-file-btn" data-action="saveToFile" type='button'>Save all lists to file</button>
+            <form id="import-form" class='import-form' action="#">
+                <label for="file-input">This will delete all your current lists and replace them with lists from file</label>
+                <input class="file-input" type="file" id="file-input" />
+                <button class="modal-btn" id='submit-import' data-action="restoreFromFile" type="submit">Restore from selected file</button>
+            </form>
+        </div>
+
         <nav class="choose-list-nav">
             <form class="form add-list-form" id="add-list-form" action="#">
                 <label class="input-label input-list-label" for="input-list">Create new list</label>
@@ -83,6 +88,7 @@
 
             </div>
         </main>
+
     </div>
 
     <div class="hidden">
