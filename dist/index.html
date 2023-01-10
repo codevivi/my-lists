@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="new Description">
+    <meta name="keywords" content="list all keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- 
+    <link rel="apple-touch-icon" sizes="180x180" href="./resources/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./resources/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./resources/favicons/favicon-16x16.png">
+    <link rel="manifest" href="./resources/favicons/site.webmanifest"> -->
+    <title>My Lists</title>
+<script defer>/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ([
+/* 0 */,
+/* 1 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8);
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_main_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+/* 2 */
+/***/ ((module) => {
+
+"use strict";
+
+
+var stylesInDOM = [];
+
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+
+  for (var i = 0; i < stylesInDOM.length; i++) {
+    if (stylesInDOM[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var indexByIdentifier = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3],
+      supports: item[4],
+      layer: item[5]
+    };
+
+    if (indexByIdentifier !== -1) {
+      stylesInDOM[indexByIdentifier].references++;
+      stylesInDOM[indexByIdentifier].updater(obj);
+    } else {
+      var updater = addElementStyle(obj, options);
+      options.byIndex = i;
+      stylesInDOM.splice(i, 0, {
+        identifier: identifier,
+        updater: updater,
+        references: 1
+      });
+    }
+
+    identifiers.push(identifier);
+  }
+
+  return identifiers;
+}
+
+function addElementStyle(obj, options) {
+  var api = options.domAPI(options);
+  api.update(obj);
+
+  var updater = function updater(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap && newObj.supports === obj.supports && newObj.layer === obj.layer) {
+        return;
+      }
+
+      api.update(obj = newObj);
+    } else {
+      api.remove();
+    }
+  };
+
+  return updater;
+}
+
+module.exports = function (list, options) {
+  options = options || {};
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDOM[index].references--;
+    }
+
+    var newLastIdentifiers = modulesToDom(newList, options);
+
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+
+      var _index = getIndexByIdentifier(_identifier);
+
+      if (stylesInDOM[_index].references === 0) {
+        stylesInDOM[_index].updater();
+
+        stylesInDOM.splice(_index, 1);
+      }
+    }
+
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
+
+/***/ }),
+/* 3 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function apply(styleElement, options, obj) {
+  var css = "";
+
+  if (obj.supports) {
+    css += "@supports (".concat(obj.supports, ") {");
+  }
+
+  if (obj.media) {
+    css += "@media ".concat(obj.media, " {");
+  }
+
+  var needLayer = typeof obj.layer !== "undefined";
+
+  if (needLayer) {
+    css += "@layer".concat(obj.layer.length > 0 ? " ".concat(obj.layer) : "", " {");
+  }
+
+  css += obj.css;
+
+  if (needLayer) {
+    css += "}";
+  }
+
+  if (obj.media) {
+    css += "}";
+  }
+
+  if (obj.supports) {
+    css += "}";
+  }
+
+  var sourceMap = obj.sourceMap;
+
+  if (sourceMap && typeof btoa !== "undefined") {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
+
+  /* istanbul ignore if  */
+
+
+  options.styleTagTransform(css, styleElement, options.options);
+}
+
+function removeStyleElement(styleElement) {
+  // istanbul ignore if
+  if (styleElement.parentNode === null) {
+    return false;
+  }
+
+  styleElement.parentNode.removeChild(styleElement);
+}
+/* istanbul ignore next  */
+
+
+function domAPI(options) {
+  var styleElement = options.insertStyleElement(options);
+  return {
+    update: function update(obj) {
+      apply(styleElement, options, obj);
+    },
+    remove: function remove() {
+      removeStyleElement(styleElement);
+    }
+  };
+}
+
+module.exports = domAPI;
+
+/***/ }),
+/* 4 */
+/***/ ((module) => {
+
+"use strict";
+
+
+var memo = {};
+/* istanbul ignore next  */
+
+function getTarget(target) {
+  if (typeof memo[target] === "undefined") {
+    var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+
+    if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+      try {
+        // This will throw an exception if access to iframe is blocked
+        // due to cross-origin restrictions
+        styleTarget = styleTarget.contentDocument.head;
+      } catch (e) {
+        // istanbul ignore next
+        styleTarget = null;
+      }
+    }
+
+    memo[target] = styleTarget;
+  }
+
+  return memo[target];
+}
+/* istanbul ignore next  */
+
+
+function insertBySelector(insert, style) {
+  var target = getTarget(insert);
+
+  if (!target) {
+    throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+  }
+
+  target.appendChild(style);
+}
+
+module.exports = insertBySelector;
+
+/***/ }),
+/* 5 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function setAttributesWithoutAttributes(styleElement) {
+  var nonce =  true ? __webpack_require__.nc : 0;
+
+  if (nonce) {
+    styleElement.setAttribute("nonce", nonce);
+  }
+}
+
+module.exports = setAttributesWithoutAttributes;
+
+/***/ }),
+/* 6 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function insertStyleElement(options) {
+  var element = document.createElement("style");
+  options.setAttributes(element, options.attributes);
+  options.insert(element, options.options);
+  return element;
+}
+
+module.exports = insertStyleElement;
+
+/***/ }),
+/* 7 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function styleTagTransform(css, styleElement) {
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css;
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild);
+    }
+
+    styleElement.appendChild(document.createTextNode(css));
+  }
+}
+
+module.exports = styleTagTransform;
+
+/***/ }),
+/* 8 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Poppins:wght@500&display=swap);"]);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nhtml {\n  width: 100%;\n  height: 100vh;\n  max-height: 100vh;\n}\n\nbody {\n  width: 100%;\n  height: 100%;\n  padding-bottom: 1em;\n  font-family: \"Poppins\", sans-serif;\n  background-color: #4061E3;\n}\n\n.container {\n  position: relative;\n  width: 100%;\n  max-width: 600px;\n  height: 100%;\n  overflow-y: scroll;\n  margin: 0 auto;\n  padding: 0 3em 4em 3em;\n  margin-bottom: 1em;\n  background-color: white;\n  color: #18181A;\n}\n.container .more-btn {\n  position: sticky;\n  display: block;\n  top: 1em;\n  left: 100%;\n  margin-right: -3em;\n  z-index: 103;\n  width: 2rem;\n  height: 2rem;\n  outline: none;\n  border: none;\n  background-color: white;\n  cursor: pointer;\n}\n.container .more-btn svg {\n  pointer-events: none;\n}\n\n.list-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  min-height: 70vh;\n}\n\n.list-name-text {\n  display: block;\n  width: 6em;\n  max-width: 6em;\n  word-break: break-word;\n}\n\n.add-item-form-container {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 100;\n  width: 100%;\n  background-color: transparent;\n}\n\n.modal {\n  height: 100vh;\n  position: absolute;\n  z-index: 101;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  padding: 3em;\n  background-color: white;\n  color: #18181A;\n}\n\n.modal-more {\n  z-index: 102;\n}\n\n.more-btn:focus,\n.more-btn:hover {\n  border-top: 1px solid #4061E3;\n}\n\n.modal-title {\n  margin-bottom: 2rem;\n  font-size: 1.4rem;\n}\n\n.modal-text {\n  letter-spacing: 0.1em;\n  color: #18181A;\n}\n\n.modal-btn {\n  margin: 1em;\n  padding: 1em;\n  width: 100%;\n  color: white;\n  background-color: #4061E3;\n  border: none;\n  outline: none;\n  cursor: pointer;\n  z-index: 9;\n}\n\n.modal-btn:focus,\n.modal-btn:hover {\n  background-color: #4061E3;\n}\n\n.import-form {\n  width: 100%;\n  margin-top: 2em;\n  display: flex;\n  padding-top: 1em;\n  align-items: center;\n  flex-direction: column;\n  border: 1px solid #4061E3;\n}\n\n.import-form label {\n  padding: 1em;\n  color: #4061E3;\n  font-size: 0.8em;\n}\n\n.file-input {\n  color: #4061E3;\n  padding: 1em;\n  width: 100%;\n}\n\n.list-name {\n  display: flex;\n  align-items: flex-end;\n  justify-content: flex-start;\n  margin-bottom: 1em;\n  width: 100%;\n}\n\n.list-name-text {\n  /* margin-bottom: 2rem; */\n  display: flex;\n  margin-right: 1em;\n  color: #4061E3;\n  font-size: 1.2em;\n  font-family: \"Merriweather\", serif;\n  line-height: 1;\n}\n\n.list-name .delete-btn {\n  min-width: 2rem;\n  min-height: 2rem;\n}\n\n.lists {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  list-style: none;\n  color: #18181A;\n  cursor: pointer;\n  padding-bottom: 0.3em;\n  flex-wrap: wrap;\n}\n\n.list-to-choose {\n  margin: 0.5em;\n  opacity: 0.6;\n}\n\n.list-to-choose:hover,\n.list-to-choose:focus {\n  color: #00D3B7;\n  opacity: 1;\n  outline: none;\n}\n\n.size {\n  margin-bottom: 0.5em;\n}\n\n.size-completed {\n  color: grey;\n  opacity: 0.6;\n}\n\n.list {\n  display: flex;\n  flex-wrap: nowrap;\n  flex-direction: column;\n}\n\n.list-undone {\n  margin: 0 0 2em 0;\n  list-style: none;\n}\n\n.list-completed {\n  color: grey;\n  opacity: 0.6;\n}\n\n.item {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  z-index: 1;\n  margin-bottom: 1em;\n  background-color: transparent;\n  border-bottom: 1px dashed #4061E3;\n  cursor: pointer;\n}\n\n.item:focus {\n  color: #00D3B7;\n  outline: none;\n}\n\n.completed {\n  text-decoration: line-through;\n  text-decoration-color: grey;\n  -moz-text-decoration-color: grey;\n}\n\n.item-text {\n  flex: 1;\n  pointer-events: none;\n}\n\n.delete-btn {\n  position: relative;\n  align-self: flex-end;\n  overflow: hidden;\n  height: 2rem;\n  width: 2rem;\n  color: rgba(0, 0, 0, 0);\n  opacity: 0.5;\n  text-indent: -1000px;\n  font-size: 0.1px;\n  cursor: pointer;\n}\n\n.delete-btn:focus {\n  opacity: 1;\n}\n\n.delete-btn:hover {\n  opacity: 1;\n}\n\n.delete-btn-icon {\n  position: absolute;\n  left: 0.1rem;\n  bottom: -0.2rem;\n  display: block;\n  color: #4061E3;\n  background-color: white;\n  text-indent: 0rem;\n  font-size: 1rem;\n  pointer-events: none;\n}\n\n.form {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 100%;\n  max-width: 600px;\n  height: 4em;\n  padding: 0.2em 2.5em;\n  margin: auto;\n  background-color: white;\n}\n\n.add-list-form {\n  width: 100%;\n  padding: 0;\n}\n\n.text-input {\n  flex: 1;\n  height: 2.5em;\n  font-size: 1em;\n  text-indent: 0.5em;\n  outline: none;\n}\n\n.input-label {\n  position: absolute;\n  text-indent: -2500px;\n  left: -2500px;\n  overflow: hidden;\n  height: 1px;\n  width: 1px;\n  font-size: 1px;\n}\n\n.add-btn {\n  position: relative;\n  width: 4em;\n  height: 2.5em;\n  color: transparent;\n  background-color: grey;\n  box-shadow: none;\n  border: none;\n  font-size: 1em;\n  text-indent: -2000px;\n}\n\n.add-btn:focus {\n  background-color: #4061E3;\n  border: none;\n  outline: none;\n}\n\n.add-btn:hover {\n  cursor: pointer;\n}\n\n.text-input:focus + .add-btn {\n  background-color: #4061E3;\n}\n\n.text-input:hover {\n  cursor: pointer;\n}\n\n.add-icon {\n  position: absolute;\n  bottom: 0.1em;\n  left: -0.1em;\n  display: block;\n  width: 100%;\n  height: 100%;\n  color: white;\n  border: none;\n  outline: none;\n  font-size: 2em;\n  text-indent: 0.2em;\n  pointer-events: none;\n}\n\n.hidden {\n  display: none;\n}\n\ninput::placeholder {\n  opacity: 0.3;\n  letter-spacing: 0.2em;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAeA;EACI,sBAAA;EACA,SAAA;EACA,UAAA;AAbJ;;AAgBA;EACI,WAAA;EACA,aAAA;EACA,iBAAA;AAbJ;;AAgBA;EAEI,WAAA;EACA,YAAA;EACA,mBAAA;EACA,kCAAA;EACA,yBAzBI;AAWR;;AAiBA;EACI,kBAAA;EAGA,WAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,cAAA;EACA,sBAAA;EACA,kBAAA;EAEA,uBApCI;EAqCJ,cAvCG;AAsBP;AAmBI;EACI,gBAAA;EACA,cAAA;EACA,QAAA;EACA,UAAA;EACA,kBAAA;EACA,YAAA;EACA,WAAA;EACA,YAAA;EAEA,aAAA;EACA,YAAA;EAEA,uBApDA;EAqDA,eAAA;AAnBR;AAqBQ;EACI,oBAAA;AAnBZ;;AAwBA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,gBAAA;AArBJ;;AA0BA;EACI,cAAA;EACA,UAAA;EACA,cAAA;EACA,sBAAA;AAvBJ;;AA2BA;EACI,eAAA;EACA,SAAA;EACA,OAAA;EACA,YAAA;EAEA,WAAA;EAEA,6BAAA;AA1BJ;;AA+BA;EACI,aAAA;EAEA,kBAAA;EACA,YAAA;EACA,aAAA;EACA,sBAAA;EAEA,mBAAA;EACA,uBAAA;EACA,MAAA;EACA,OAAA;EACA,QAAA;EACA,SAAA;EACA,YAAA;EAEA,uBA3GI;EA4GJ,cA9GG;AA+EP;;AAkCA;EACI,YAAA;AA/BJ;;AAoCA;;EAGI,6BAAA;AAlCJ;;AAqCA;EACI,mBAAA;EACA,iBAAA;AAlCJ;;AAqCA;EACI,qBAAA;EACA,cAAA;AAlCJ;;AAqCA;EACI,WAAA;EACA,YAAA;EACA,WAAA;EAEA,YAAA;EACA,yBA/II;EAgJJ,YAAA;EACA,aAAA;EACA,eAAA;EACA,UAAA;AAnCJ;;AAsCA;;EAEI,yBAxJI;AAqHR;;AAwCA;EACI,WAAA;EACA,eAAA;EACA,aAAA;EACA,gBAAA;EACA,mBAAA;EACA,sBAAA;EACA,yBAAA;AArCJ;;AAwCA;EACI,YAAA;EACA,cAzKI;EA0KJ,gBAAA;AArCJ;;AA0CA;EACI,cAhLI;EAiLJ,YAAA;EACA,WAAA;AAvCJ;;AAkDA;EACI,aAAA;EACA,qBAAA;EACA,2BAAA;EACA,kBAAA;EAEA,WAAA;AAhDJ;;AAmDA;EACI,yBAAA;EACA,aAAA;EACA,iBAAA;EAEA,cA3MI;EA4MJ,gBAAA;EACA,kCAAA;EACA,cAAA;AAjDJ;;AAqDA;EACI,eAAA;EACA,gBAAA;AAlDJ;;AAqDA;EACI,aAAA;EACA,mBAAA;EACA,2BAAA;EACA,gBAAA;EACA,cA1NG;EA2NH,eAAA;EACA,qBAAA;EACA,eAAA;AAlDJ;;AAsDA;EACI,aAAA;EACA,YAAA;AAnDJ;;AAsDA;;EAEI,cAzOI;EA0OJ,UAAA;EACA,aAAA;AAnDJ;;AAsDA;EACI,oBAAA;AAnDJ;;AAsDA;EACI,WAjPG;EAkPH,YAAA;AAnDJ;;AAsDA;EACI,aAAA;EACA,iBAAA;EACA,sBAAA;AAnDJ;;AAsDA;EACI,iBAAA;EACA,gBAAA;AAnDJ;;AAsDA;EACI,WAjQG;EAkQH,YAAA;AAnDJ;;AAsDA;EACI,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,UAAA;EAEA,kBAAA;EAEA,6BAAA;EACA,iCAAA;EACA,eAAA;AArDJ;;AAwDA;EACI,cArRI;EAsRJ,aAAA;AArDJ;;AAwDA;EACI,6BAAA;EACA,2BAzRG;EA0RH,gCA1RG;AAqOP;;AAwDA;EACI,OAAA;EACA,oBAAA;AArDJ;;AAwDA;EACI,kBAAA;EAEA,oBAAA;EACA,gBAAA;EAEA,YAAA;EACA,WAAA;EAEA,uBAAA;EACA,YAAA;EAEA,oBAAA;EACA,gBAAA;EACA,eAAA;AAzDJ;;AA4DA;EACI,UAAA;AAzDJ;;AA4DA;EACI,UAAA;AAzDJ;;AA4DA;EACI,kBAAA;EACA,YAAA;EACA,eAAA;EAEA,cAAA;EAEA,cArUI;EAsUJ,uBAAA;EAEA,iBAAA;EACA,eAAA;EACA,oBAAA;AA5DJ;;AAiEA;EACI,kBAAA;EAEA,aAAA;EACA,mBAAA;EACA,8BAAA;EAEA,WAAA;EACA,gBAAA;EACA,WAAA;EACA,oBAAA;EACA,YAAA;EAEA,uBAxVI;AAuRR;;AAqEA;EACI,WAAA;EACA,UAAA;AAlEJ;;AAuEA;EACI,OAAA;EACA,aAAA;EACA,cAAA;EACA,kBAAA;EACA,aAAA;AApEJ;;AAwEA;EACI,kBAAA;EACA,oBAAA;EACA,aAAA;EACA,gBAAA;EAEA,WAAA;EACA,UAAA;EAEA,cAAA;AAvEJ;;AA2EA;EACI,kBAAA;EAEA,UAAA;EACA,aAAA;EAEA,kBAAA;EACA,sBAjYG;EAkYH,gBAAA;EACA,YAAA;EAEA,cAAA;EACA,oBAAA;AA3EJ;;AA8EA;EACI,yBA7YI;EA8YJ,YAAA;EACA,aAAA;AA3EJ;;AA+EA;EACI,eAAA;AA5EJ;;AA+EA;EACI,yBAxZI;AA4UR;;AAgFA;EACI,eAAA;AA7EJ;;AAiFA;EACI,kBAAA;EACA,aAAA;EACA,YAAA;EAEA,cAAA;EACA,WAAA;EACA,YAAA;EAEA,YAtaI;EAuaJ,YAAA;EACA,aAAA;EAEA,cAAA;EACA,kBAAA;EACA,oBAAA;AAjFJ;;AAoFA;EACI,aAAA;AAjFJ;;AAoFA;EACI,YAAA;EACA,qBAAA;AAjFJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Poppins:wght@500&display=swap');\n//$accent: ;\n// $accent: #5500AA;\n// $focus: #6161de;\n// $dark: #18181A;\n// $grey: grey;\n// $light: white;\n\n$accent:#4061E3;\n$focus: #00D3B7;\n$dark: #18181A;\n$grey: grey;\n$light: white;\n$bg: #8D95F2;\n\n* {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n}\n\nhtml {\n    width: 100%;\n    height: 100vh;\n    max-height: 100vh;\n}\n\nbody {\n    //position: relative;\n    width: 100%;\n    height: 100%;\n    padding-bottom: 1em;\n    font-family: 'Poppins', sans-serif;\n    background-color: $accent;\n}\n\n.container {\n    position: relative;\n\n\n    width: 100%;\n    max-width: 600px;\n    height: 100%;\n    overflow-y: scroll;\n    margin: 0 auto;\n    padding: 0 3em 4em 3em;\n    margin-bottom: 1em;\n\n    background-color: $light;\n    color: $dark;\n\n    & .more-btn {\n        position: sticky;\n        display: block;\n        top: 1em;\n        left: 100%;\n        margin-right: -3em;\n        z-index: 103;\n        width: 2rem;\n        height: 2rem;\n\n        outline: none;\n        border: none;\n\n        background-color: $light;\n        cursor: pointer;\n\n        & svg {\n            pointer-events: none;\n        }\n    }\n}\n\n.list-container {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    min-height: 70vh;\n\n}\n\n\n.list-name-text {\n    display: block;\n    width: 6em;\n    max-width: 6em;\n    word-break: break-word;\n\n}\n\n.add-item-form-container {\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    z-index: 100;\n    //flex: 1;\n    width: 100%;\n\n    background-color: transparent;\n}\n\n\n\n.modal {\n    height: 100vh;\n\n    position: absolute;\n    z-index: 101;\n    display: flex;\n    flex-direction: column;\n\n    align-items: center;\n    justify-content: center;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    padding: 3em;\n\n    background-color: $light;\n    color: $dark;\n}\n\n.modal-more {\n    z-index: 102;\n}\n\n\n\n.more-btn:focus,\n.more-btn:hover {\n\n    border-top: 1px solid $accent;\n}\n\n.modal-title {\n    margin-bottom: 2rem;\n    font-size: 1.4rem;\n}\n\n.modal-text {\n    letter-spacing: 0.1em;\n    color: #18181A;\n}\n\n.modal-btn {\n    margin: 1em;\n    padding: 1em;\n    width: 100%;\n\n    color: white;\n    background-color: $accent;\n    border: none;\n    outline: none;\n    cursor: pointer;\n    z-index: 9;\n}\n\n.modal-btn:focus,\n.modal-btn:hover {\n    background-color: $accent;\n}\n\n\n\n.import-form {\n    width: 100%;\n    margin-top: 2em;\n    display: flex;\n    padding-top: 1em;\n    align-items: center;\n    flex-direction: column;\n    border: 1px solid $accent;\n}\n\n.import-form label {\n    padding: 1em;\n    color: $accent;\n    font-size: 0.8em;\n\n\n}\n\n.file-input {\n    color: $accent;\n    padding: 1em;\n    width: 100%;\n}\n\n\n\n\n\n\n\n\n\n.list-name {\n    display: flex;\n    align-items: flex-end;\n    justify-content: flex-start;\n    margin-bottom: 1em;\n\n    width: 100%;\n}\n\n.list-name-text {\n    /* margin-bottom: 2rem; */\n    display: flex;\n    margin-right: 1em;\n\n    color: $accent;\n    font-size: 1.2em;\n    font-family: 'Merriweather', serif;\n    line-height: 1;\n\n}\n\n.list-name .delete-btn {\n    min-width: 2rem;\n    min-height: 2rem;\n}\n\n.lists {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    list-style: none;\n    color: $dark;\n    cursor: pointer;\n    padding-bottom: 0.3em;\n    flex-wrap: wrap;\n\n}\n\n.list-to-choose {\n    margin: 0.5em;\n    opacity: 0.6;\n}\n\n.list-to-choose:hover,\n.list-to-choose:focus {\n    color: $focus;\n    opacity: 1;\n    outline: none;\n}\n\n.size {\n    margin-bottom: 0.5em;\n}\n\n.size-completed {\n    color: $grey;\n    opacity: 0.6;\n}\n\n.list {\n    display: flex;\n    flex-wrap: nowrap;\n    flex-direction: column;\n}\n\n.list-undone {\n    margin: 0 0 2em 0;\n    list-style: none;\n}\n\n.list-completed {\n    color: $grey;\n    opacity: 0.6;\n}\n\n.item {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    z-index: 1;\n\n    margin-bottom: 1em;\n\n    background-color: transparent;\n    border-bottom: 1px dashed $accent;\n    cursor: pointer;\n}\n\n.item:focus {\n    color: $focus;\n    outline: none;\n}\n\n.completed {\n    text-decoration: line-through;\n    text-decoration-color: $grey;\n    -moz-text-decoration-color: $grey;\n}\n\n.item-text {\n    flex: 1;\n    pointer-events: none;\n}\n\n.delete-btn {\n    position: relative;\n\n    align-self: flex-end;\n    overflow: hidden;\n\n    height: 2rem;\n    width: 2rem;\n\n    color: rgba(0, 0, 0, 0);\n    opacity: 0.5;\n\n    text-indent: -1000px;\n    font-size: 0.1px;\n    cursor: pointer;\n}\n\n.delete-btn:focus {\n    opacity: 1;\n}\n\n.delete-btn:hover {\n    opacity: 1;\n}\n\n.delete-btn-icon {\n    position: absolute;\n    left: 0.1rem;\n    bottom: -0.2rem;\n\n    display: block;\n\n    color: $accent;\n    background-color: white;\n\n    text-indent: 0rem;\n    font-size: 1rem;\n    pointer-events: none;\n}\n\n\n\n.form {\n    position: relative;\n\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n\n    width: 100%;\n    max-width: 600px;\n    height: 4em;\n    padding: 0.2em 2.5em;\n    margin: auto;\n\n    background-color: $light;\n}\n\n\n.add-list-form {\n    width: 100%;\n    padding: 0;\n}\n\n\n\n.text-input {\n    flex: 1;\n    height: 2.5em;\n    font-size: 1em;\n    text-indent: 0.5em;\n    outline: none;\n}\n\n\n.input-label {\n    position: absolute;\n    text-indent: -2500px;\n    left: -2500px;\n    overflow: hidden;\n\n    height: 1px;\n    width: 1px;\n\n    font-size: 1px;\n}\n\n\n.add-btn {\n    position: relative;\n\n    width: 4em;\n    height: 2.5em;\n\n    color: transparent;\n    background-color: $grey;\n    box-shadow: none;\n    border: none;\n\n    font-size: 1em;\n    text-indent: -2000px;\n}\n\n.add-btn:focus {\n    background-color: $accent;\n    border: none;\n    outline: none;\n\n}\n\n.add-btn:hover {\n    cursor: pointer;\n}\n\n.text-input:focus+.add-btn {\n    background-color: $accent;\n\n}\n\n.text-input:hover {\n    cursor: pointer;\n\n}\n\n.add-icon {\n    position: absolute;\n    bottom: 0.1em;\n    left: -0.1em;\n\n    display: block;\n    width: 100%;\n    height: 100%;\n\n    color: $light;\n    border: none;\n    outline: none;\n\n    font-size: 2em;\n    text-indent: 0.2em;\n    pointer-events: none;\n}\n\n.hidden {\n    display: none;\n}\n\ninput::placeholder {\n    opacity: 0.3;\n    letter-spacing: 0.2em;\n\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 9 */
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (item) {
+  var content = item[1];
+  var cssMapping = item[3];
+  if (!cssMapping) {
+    return content;
+  }
+  if (typeof btoa === "function") {
+    var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));
+    var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+    var sourceMapping = "/*# ".concat(data, " */");
+    return [content].concat([sourceMapping]).join("\n");
+  }
+  return [content].join("\n");
+};
+
+/***/ }),
+/* 10 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+module.exports = function (cssWithMappingToString) {
+  var list = [];
+
+  // return the list of modules as css string
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
+      if (item[2]) {
+        content += "@media ".concat(item[2], " {");
+      }
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+      content += cssWithMappingToString(item);
+      if (needLayer) {
+        content += "}";
+      }
+      if (item[2]) {
+        content += "}";
+      }
+      if (item[4]) {
+        content += "}";
+      }
+      return content;
+    }).join("");
+  };
+
+  // import a list of modules into the list
+  list.i = function i(modules, media, dedupe, supports, layer) {
+    if (typeof modules === "string") {
+      modules = [[null, modules, undefined]];
+    }
+    var alreadyImportedModules = {};
+    if (dedupe) {
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        continue;
+      }
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
+        } else {
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
+        }
+      }
+      list.push(item);
+    }
+  };
+  return list;
+};
+
+/***/ }),
+/* 11 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var List = __webpack_require__(12);
+var ListToChooseElement = __webpack_require__(18);
+var myLocalStorage = __webpack_require__(17);
+var listsElement = document.getElementById("lists");
+var addListFormElement = document.getElementById("add-list-form");
+var inputListElement = document.getElementById("input-list");
+console.log("vaje");
+var Lists = /*#__PURE__*/function () {
+  function Lists() {
+    _classCallCheck(this, Lists);
+    console.log("in lists constructor");
+    var allLists = myLocalStorage.getAllLists();
+    var elementsToChooseMap = new Map();
+    var selectedList;
+    allLists.forEach(function (list) {
+      if (list.selected) {
+        selectedList = new List(list);
+      } else {
+        elementsToChooseMap.set(list.id, new ListToChooseElement(list));
+      }
+    });
+    this.allLists = allLists;
+    this.elementsToChoose = elementsToChooseMap;
+    this.selectedList = selectedList;
+  }
+  _createClass(Lists, [{
+    key: "render",
+    value: function render() {
+      if (this.selectedList) {
+        console.log(this.selectedList);
+        console.log("trying to render selected list");
+        this.selectedList.render();
+      }
+      this.elementsToChoose.forEach(function (element) {
+        Lists.listsEl.append(element);
+      });
+    }
+  }, {
+    key: "unselectCurrentList",
+    value: function unselectCurrentList() {
+      var listToUnSelect = myLocalStorage.getItem(this.selectedList.id);
+      listToUnSelect.selected = false;
+      myLocalStorage.setItem(listToUnSelect.id, listToUnSelect);
+      this.allLists.set(listToUnSelect.id, listToUnSelect);
+      var el = new ListToChooseElement(listToUnSelect);
+      this.elementsToChoose.set(listToUnSelect.id, el);
+      Lists.listsEl.append(el);
+    }
+  }, {
+    key: "addList",
+    value: function addList(name) {
+      var alreadyExistingList = null;
+      this.allLists.forEach(function (list) {
+        if (list.name === name) {
+          alreadyExistingList = list;
+        }
+      });
+      if (!alreadyExistingList) {
+        var id = new Date().getTime();
+        var list = {
+          id: id,
+          name: name,
+          itemsUndone: [],
+          itemsCompleted: []
+        };
+        myLocalStorage.setItem(list.id, list);
+        this.allLists.set(id, list);
+        this.selectList(id);
+        Lists.addListFormEl.reset();
+        Lists.inputListEl.value = "";
+      } else {
+        this.selectList(alreadyExistingList.id);
+      }
+      Lists.addListFormEl.reset();
+      Lists.inputListEl.value = "";
+    }
+  }, {
+    key: "deleteList",
+    value: function deleteList(id) {
+      this.allLists["delete"](id);
+      this.selectedList.clearUi();
+      myLocalStorage.removeItem(id);
+      this.selectedList = null;
+
+      //select any first list if any left
+      var allListsIterator = this.allLists.entries();
+      var allListsIteratorFirst = allListsIterator.next();
+      if (allListsIteratorFirst.value) {
+        var newListToChoose = allListsIteratorFirst.value[1];
+        this.selectList(newListToChoose.id);
+      }
+    }
+  }, {
+    key: "selectList",
+    value: function selectList(id) {
+      var _this$elementsToChoos, _this$elementsToChoos2;
+      if (this.selectedList) {
+        this.unselectCurrentList();
+      }
+      var updatedChosenList = myLocalStorage.getItem(id);
+      updatedChosenList.selected = true;
+      (_this$elementsToChoos = this.elementsToChoose.get(id)) === null || _this$elementsToChoos === void 0 ? void 0 : _this$elementsToChoos.remove();
+      (_this$elementsToChoos2 = this.elementsToChoose) === null || _this$elementsToChoos2 === void 0 ? void 0 : _this$elementsToChoos2["delete"](id);
+      myLocalStorage.setItem(id, updatedChosenList);
+      this.selectedList = new List(updatedChosenList);
+      this.selectedList.render();
+    }
+  }], [{
+    key: "clearUi",
+    value: function clearUi() {
+      this.listsEl.innerHTML = "";
+    }
+  }, {
+    key: "listsEl",
+    get: function get() {
+      return listsElement;
+    }
+  }, {
+    key: "addListFormEl",
+    get: function get() {
+      return addListFormElement;
+    }
+  }, {
+    key: "inputListEl",
+    get: function get() {
+      return inputListElement;
+    }
+  }]);
+  return Lists;
+}();
+module.exports = Lists;
+
+/***/ }),
+/* 12 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var ListItemElement = __webpack_require__(13);
+var ListTitleElement = __webpack_require__(16);
+var listUndoneElement = document.getElementById("list-undone"); //ul
+var sizeUndoneElement = document.getElementById("size-undone");
+var listCompletedElement = document.getElementById("list-completed"); //ul
+var sizeCompletedElement = document.getElementById("size-completed");
+var itemInputElement = document.getElementById("input-item");
+var addItemFormElement = document.getElementById("add-item-form");
+var deleteListButtonElement = document.getElementById("delete-list-btn");
+var listTitleContainerElement = document.getElementById("list-title-container");
+console.log(listTitleContainerElement);
+var myLocalStorage = __webpack_require__(17);
+var List = /*#__PURE__*/function () {
+  function List(listFromStorage) {
+    _classCallCheck(this, List);
+    this.name = listFromStorage.name;
+    this.id = listFromStorage.id;
+    this.selected = listFromStorage.selected;
+    this.itemsCompleted = new Map(listFromStorage.itemsCompleted);
+    this.itemsUndone = new Map(listFromStorage.itemsUndone);
+    this.itemElements = new Map();
+    this.titleElement = null;
+  }
+  _createClass(List, [{
+    key: "createElements",
+    value: function createElements() {
+      var _this = this;
+      this.titleElement = new ListTitleElement(this);
+      this.itemsUndone.forEach(function (item) {
+        return _this.itemElements.set(item.id, new ListItemElement(item));
+      });
+      this.itemsCompleted.forEach(function (item) {
+        return _this.itemElements.set(item.id, new ListItemElement(item));
+      });
+      this.itemElements.forEach(function (el) {
+        return el.addEventListener("focus", function (e) {
+          List.focusHistory = el;
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      List.resetUi();
+      this.createElements();
+      List.listTitleContainerEl.append(this.titleElement);
+      this.itemElements.forEach(function (element) {
+        if (!element.dataset.completed) {
+          List.listUndoneEl.append(element);
+        } else {
+          List.listCompletedEl.prepend(element);
+        }
+      });
+      this.updateSizeElements();
+    }
+  }, {
+    key: "updateSizeElements",
+    value: function updateSizeElements() {
+      List.sizeCompletedEl.textContent = "(".concat(this.itemsCompleted.size, ")");
+      List.sizeUndoneEl.textContent = "(".concat(this.itemsUndone.size, ")");
+    }
+  }, {
+    key: "prepListForStorage",
+    value: function prepListForStorage() {
+      var listForStorage = {
+        id: this.id,
+        name: this.name,
+        selected: this.selected,
+        itemsCompleted: _toConsumableArray(this.itemsCompleted),
+        itemsUndone: _toConsumableArray(this.itemsUndone)
+      };
+      return listForStorage;
+    }
+  }, {
+    key: "save",
+    value: function save() {
+      myLocalStorage.setItem(this.id, this.prepListForStorage());
+    }
+  }, {
+    key: "addItem",
+    value: function addItem(value) {
+      var alreadyExists = false;
+      this.itemsUndone.forEach(function (item) {
+        if (item.value === value) {
+          alreadyExists = true;
+        }
+      });
+      if (!alreadyExists) {
+        var itemIsCompleted = null;
+        this.itemsCompleted.forEach(function (item) {
+          if (item.value === value) {
+            itemIsCompleted = item;
+          }
+        });
+        if (itemIsCompleted) {
+          this.itemElements.get(itemIsCompleted.id).remove();
+          this.itemsCompleted["delete"](itemIsCompleted.id);
+        }
+        var id = new Date().getTime();
+        var item = {
+          id: id,
+          value: value,
+          completed: false
+        };
+        this.itemsUndone.set(id, item);
+        this.itemElements.set(id, new ListItemElement(item));
+        //      this.itemsElements.get(id).addEventListener("focus", this.focusHistory.push(this));
+        List.listUndoneEl.append(this.itemElements.get(id));
+        this.updateSizeElements();
+        this.save();
+      }
+      List.addItemFormEl.reset();
+      List.itemInputEl.value = "";
+      List.itemInputEl.focus();
+    }
+  }, {
+    key: "deleteItem",
+    value: function deleteItem(id) {
+      this.itemsUndone["delete"](id);
+      this.itemsCompleted["delete"](id);
+      this.itemElements.get(id).remove();
+      this.itemElements["delete"](id);
+      this.updateSizeElements();
+      this.save();
+      List.focusHistory.pop();
+      List.focusHistory[List.focusHistory.length - 1].focus();
+      console.log(List.focusHistory, "focus history");
+    }
+  }, {
+    key: "toggleItemCompleted",
+    value: function toggleItemCompleted(id) {
+      var item = this.itemsUndone.get(id) || this.itemsCompleted.get(id);
+      item.completed = !item.completed;
+      item.id = new Date().getTime();
+      this.itemElements.set(item.id, new ListItemElement(item));
+      if (!item.completed) {
+        this.itemsUndone.set(item.id, item);
+        List.listUndoneEl.append(this.itemElements.get(item.id));
+      } else {
+        this.itemsCompleted.set(item.id, item);
+        List.listCompletedEl.prepend(this.itemElements.get(item.id));
+      }
+      this.deleteItem(id);
+    }
+  }, {
+    key: "clearUi",
+    value: function clearUi() {
+      List.resetUi();
+      List.addItemFormEl.classList.add("hidden");
+    }
+  }], [{
+    key: "resetUi",
+    value: function resetUi() {
+      List.listTitleContainerEl.innerHTML = "";
+      List.listUndoneEl.innerHTML = "";
+      List.listCompletedEl.innerHTML = "";
+      List.sizeCompletedEl.textContent = "";
+      List.sizeUndoneEl.textContent = "";
+      List.addItemFormEl.classList.remove("hidden");
+      List.itemInputEl.focus();
+    }
+  }, {
+    key: "listTitleContainerEl",
+    get: function get() {
+      return listTitleContainerElement;
+    }
+  }, {
+    key: "deleteListButtonEl",
+    get: function get() {
+      return deleteListButtonElement;
+    }
+  }, {
+    key: "listUndoneEl",
+    get: function get() {
+      return listUndoneElement;
+    }
+  }, {
+    key: "sizeUndoneEl",
+    get: function get() {
+      return sizeUndoneElement;
+    }
+  }, {
+    key: "listCompletedEl",
+    get: function get() {
+      return listCompletedElement;
+    }
+  }, {
+    key: "sizeCompletedEl",
+    get: function get() {
+      return sizeCompletedElement;
+    }
+  }, {
+    key: "itemInputEl",
+    get: function get() {
+      return itemInputElement;
+    }
+  }, {
+    key: "addItemFormEl",
+    get: function get() {
+      return addItemFormElement;
+    }
+  }]);
+  return List;
+}();
+_defineProperty(List, "focusHistory", []);
+module.exports = List;
+
+/***/ }),
+/* 13 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classStaticPrivateMethodGet(receiver, classConstructor, method) { _classCheckPrivateStaticAccess(receiver, classConstructor); return method; }
+function _classCheckPrivateStaticAccess(receiver, classConstructor) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } }
+var El = __webpack_require__(14);
+var _require = __webpack_require__(14),
+  span = _require.span,
+  textNode = _require.textNode,
+  li = _require.li,
+  button = _require.button;
+var DeleteButton = __webpack_require__(15);
+var ListItemElement = /*#__PURE__*/_createClass(function ListItemElement(item) {
+  _classCallCheck(this, ListItemElement);
+  var deleteButton = new DeleteButton(item.id, "deleteItem");
+  var options = {
+    children: [_classStaticPrivateMethodGet(ListItemElement, ListItemElement, _createItemTextElement).call(ListItemElement, item.value), deleteButton],
+    attributes: [{
+      name: "class",
+      value: "item ".concat(item.completed ? "completed" : "")
+    }, {
+      name: "id",
+      value: "id" + item.id
+    }, {
+      name: "tabindex",
+      value: 0
+    }, {
+      name: "data-id",
+      value: item.id
+    }, {
+      name: "data-completed",
+      value: item.completed ? "true" : ""
+    }, {
+      name: "data-action",
+      value: "toggleItemCompleted"
+    }]
+  };
+  var el = li(options);
+  el.addEventListener("focus", function () {
+    deleteButton.setAttribute("tabindex", "0");
+  });
+  el.addEventListener("blur", function () {
+    deleteButton.setAttribute("tabindex", "-1");
+  });
+  return el;
+});
+function _createItemTextElement(text) {
+  var options = {
+    children: [textNode(text)],
+    attributes: [{
+      name: "class",
+      value: "item-text"
+    }]
+  };
+  return span(options);
+}
+module.exports = ListItemElement;
+
+/***/ }),
+/* 14 */
+/***/ ((module) => {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var El = /*#__PURE__*/function () {
+  function El() {
+    _classCallCheck(this, El);
+  }
+  _createClass(El, null, [{
+    key: "textNode",
+    value: function textNode(text) {
+      return document.createTextNode(text);
+    }
+  }, {
+    key: "span",
+    value: function span(options) {
+      var span = document.createElement("span");
+      options.children.forEach(function (child) {
+        span.appendChild(child);
+      });
+      options.attributes.forEach(function (attr) {
+        span.setAttribute(attr.name, attr.value);
+      });
+      return span;
+    }
+  }, {
+    key: "h1",
+    value: function h1(options) {
+      var h1 = document.createElement("h1");
+      options.children.forEach(function (child) {
+        h1.appendChild(child);
+      });
+      options.attributes.forEach(function (attr) {
+        h1.setAttribute(attr.name, attr.value);
+      });
+      return h1;
+    }
+  }, {
+    key: "li",
+    value: function li(options) {
+      var li = document.createElement("li");
+      options.children.forEach(function (child) {
+        li.appendChild(child);
+      });
+      options.attributes.forEach(function (attr) {
+        li.setAttribute(attr.name, attr.value);
+      });
+      return li;
+    }
+  }, {
+    key: "button",
+    value: function button(options) {
+      var button = document.createElement("button");
+      options.children.forEach(function (child) {
+        button.appendChild(child);
+      });
+      options.attributes.forEach(function (attr) {
+        button.setAttribute(attr.name, attr.value);
+      });
+      return button;
+    }
+  }]);
+  return El;
+}();
+module.exports = El;
+
+/***/ }),
+/* 15 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classStaticPrivateMethodGet(receiver, classConstructor, method) { _classCheckPrivateStaticAccess(receiver, classConstructor); return method; }
+function _classCheckPrivateStaticAccess(receiver, classConstructor) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } }
+var _require = __webpack_require__(14),
+  span = _require.span,
+  textNode = _require.textNode,
+  li = _require.li,
+  button = _require.button;
+var binSvg = document.getElementById("bin-svg");
+var DeleteButton = /*#__PURE__*/_createClass(function DeleteButton(thingToDeleteId, actionString) {
+  _classCallCheck(this, DeleteButton);
+  var options = {
+    children: [textNode("Delete"), _classStaticPrivateMethodGet(DeleteButton, DeleteButton, _createDeleteBtnIcon).call(DeleteButton)],
+    attributes: [{
+      name: "class",
+      value: "delete-btn"
+    }, {
+      name: "type",
+      value: "button"
+    }, {
+      name: "tabindex",
+      value: "-1"
+    }, {
+      name: "data-action",
+      value: actionString
+    }, {
+      name: "data-id",
+      value: thingToDeleteId
+    }
+    //{ name: "data-completed", value: item.completed ? "true" : "" },
+    ]
+  };
+
+  return button(options);
+});
+function _createDeleteBtnIcon() {
+  var icon = binSvg.cloneNode(true);
+  icon.removeAttribute("id");
+  var options = {
+    children: [icon],
+    attributes: [{
+      name: "class",
+      value: "delete-btn-icon"
+    }]
+  };
+  return span(options);
+}
+module.exports = DeleteButton;
+
+/***/ }),
+/* 16 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classStaticPrivateMethodGet(receiver, classConstructor, method) { _classCheckPrivateStaticAccess(receiver, classConstructor); return method; }
+function _classCheckPrivateStaticAccess(receiver, classConstructor) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } }
+var _require = __webpack_require__(14),
+  span = _require.span,
+  h1 = _require.h1,
+  textNode = _require.textNode,
+  li = _require.li,
+  button = _require.button;
+var DeleteButton = __webpack_require__(15);
+var ListTitleElement = /*#__PURE__*/_createClass(function ListTitleElement(list) {
+  _classCallCheck(this, ListTitleElement);
+  var options = {
+    children: [_classStaticPrivateMethodGet(ListTitleElement, ListTitleElement, _listNameText).call(ListTitleElement, list), new DeleteButton(list.id, "deleteList")],
+    attributes: [{
+      name: "class",
+      value: "list-name"
+    }, {
+      name: "data-id",
+      value: list.id
+    }]
+  };
+  var el = h1(options);
+  return el;
+});
+function _listNameText(list) {
+  var options = {
+    children: [textNode(list.name)],
+    attributes: [{
+      name: "class",
+      value: "list-name-text"
+    }, {
+      name: "data-id",
+      value: list.id
+    }]
+  };
+  var el = span(options);
+  return el;
+}
+module.exports = ListTitleElement;
+
+/***/ }),
+/* 17 */
+/***/ ((module) => {
+
+"use strict";
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var acceptLocalStorageModal = document.getElementById("accept-localstorage-modal");
+var MyLocalStorage = /*#__PURE__*/function () {
+  function MyLocalStorage() {
+    _classCallCheck(this, MyLocalStorage);
+    if (!storageAvailable("localStorage")) {
+      return {
+        isAccepted: false,
+        error: "localStorage is not available in this browser "
+      };
+    }
+    var isAccepted = localStorage.getItem("isAccepted") ? true : false;
+    if (!isAccepted) {
+      acceptLocalStorageModal.classList.remove("hidden");
+    }
+    this.isAccepted = isAccepted;
+  }
+  _createClass(MyLocalStorage, [{
+    key: "accept",
+    value: function accept() {
+      this.isAccepted = true;
+      this.setItem("isAccepted", true);
+      acceptLocalStorageModal.classList.add("hidden");
+    }
+  }, {
+    key: "refuse",
+    value: function refuse() {
+      this.isAccepted = false;
+      this.clear();
+    }
+  }, {
+    key: "reset",
+    value: function reset() {
+      this.clear();
+      this.setItem("isAccepted", this.isAccepted);
+    }
+  }, {
+    key: "clear",
+    value: function clear() {
+      localStorage.clear();
+    }
+  }, {
+    key: "getItem",
+    value: function getItem(name) {
+      var item = localStorage.getItem(name);
+      if (!item) return false;
+      if (item.startsWith("{")) {
+        item = JSON.parse(item);
+      }
+      return item;
+    }
+  }, {
+    key: "getAll",
+    value: function getAll() {
+      var _this = this;
+      var obj = {};
+      Object.keys(localStorage).map(function (key) {
+        return obj[key] = _this.getItem(key);
+      });
+      return obj;
+    }
+  }, {
+    key: "getAllLists",
+    value: function getAllLists() {
+      var _this2 = this;
+      var all = [];
+      Object.keys(localStorage).forEach(function (key) {
+        if (key !== "selectedListId" && key !== "isAccepted") {
+          all.push(_this2.getItem(key));
+        }
+      });
+      return new Map(all.map(function (list) {
+        return [list.id, list];
+      }));
+    }
+  }, {
+    key: "setItem",
+    value: function setItem(name, value) {
+      if (this.isAccepted) {
+        if (_typeof(value) === "object") {
+          localStorage.setItem(name, JSON.stringify(value));
+        } else {
+          localStorage.setItem(name, value);
+        }
+      }
+    }
+  }, {
+    key: "removeItem",
+    value: function removeItem(name) {
+      localStorage.removeItem(name);
+    }
+  }]);
+  return MyLocalStorage;
+}();
+function storageAvailable(type) {
+  var storage;
+  try {
+    storage = window[type];
+    var x = "__storage_test__";
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  } catch (e) {
+    return e instanceof DOMException && (
+    // everything except Firefox
+    e.code === 22 ||
+    // Firefox
+    e.code === 1014 ||
+    // test name field too, because code might not be present
+    // everything except Firefox
+    e.name === "QuotaExceededError" ||
+    // Firefox
+    e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+    // acknowledge QuotaExceededError only if there's something already stored
+    storage && storage.length !== 0;
+  }
+}
+module.exports = new MyLocalStorage();
+
+/***/ }),
+/* 18 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _require = __webpack_require__(14),
+  span = _require.span,
+  textNode = _require.textNode,
+  li = _require.li,
+  button = _require.button;
+var El = __webpack_require__(14);
+var ListToChooseElement = /*#__PURE__*/_createClass(function ListToChooseElement(list) {
+  _classCallCheck(this, ListToChooseElement);
+  var options = {
+    children: [El.textNode("".concat(list.name, " (").concat(list.itemsUndone.length, ")"))],
+    attributes: [{
+      name: "class",
+      value: "list-to-choose"
+    }, {
+      name: "data-id",
+      value: list.id
+    }, {
+      name: "tabindex",
+      value: "0"
+    }, {
+      name: "data-action",
+      value: "selectList"
+    }]
+  };
+  var el = li(options);
+  return el;
+});
+module.exports = ListToChooseElement;
+
+/***/ }),
+/* 19 */
+/***/ ((module) => {
+
+var fileIdentifier = "list#39"; //will insert this at the beginning of the file when saving to fi
+
+module.exports.getFromFile = function getFromFile(file) {
+  if (file) {
+    if (!file.name.endsWith(".txt")) {
+      alert("Wrong file type.");
+      inputFile.value = "";
+      return;
+    }
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = function () {
+        var result = reader.result;
+        if (!result.startsWith(fileIdentifier)) {
+          alert("Wrong file type.Can only open files saved with this application.");
+          inputFile.value = "";
+          return;
+        }
+        result = result.substring(fileIdentifier.length);
+        result = JSON.parse(result);
+        resolve(result);
+        reader.onerror = reject;
+      };
+    });
+  }
+};
+function createDownloadFile(filename, text) {
+  var element = document.createElement("a");
+  element.innerText = "download";
+  element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+  element.setAttribute("download", filename);
+  element.style.display = "none";
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+module.exports.saveToFile = function downLoadFile(name, content) {
+  var today = new Date();
+  var month = today.getMonth() + 1;
+  var date = "".concat(today.getFullYear().toString(), "-").concat(month.toString(), "-").concat(today.getDate().toString(), "_T_").concat(today.getHours().toString(), "-").concat(today.getMinutes().toString(), "-").concat(today.getSeconds().toString());
+  var fileName = "My_lists_".concat(date, ".txt");
+  createDownloadFile(fileName, fileIdentifier + JSON.stringify(content));
+};
+
+/***/ })
+/******/ 	]);
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			id: moduleId,
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+var styles = __webpack_require__(1);
+////testing development only
+window.onload = function () {
+  var Lists = __webpack_require__(11);
+  var body = document.querySelector("body");
+  var myLocalStorage = __webpack_require__(17);
+  var inputListElement = document.getElementById("input-list");
+  var itemInputElement = document.getElementById("input-item");
+  var modalMoreElement = document.getElementById("modal-more");
+  var importForm = document.getElementById("import-form");
+  var moreButton = document.getElementById("more-btn");
+  var moreIcon = document.getElementById("more-icon");
+  var closeIcon = document.getElementById("close-icon");
+  var fileInput = document.getElementById("file-input");
+  var _require = __webpack_require__(19),
+    _saveToFile = _require.saveToFile,
+    getFromFile = _require.getFromFile;
+  var lists = new Lists();
+  lists.render();
+  var userActions = {
+    acceptLocalStorage: function acceptLocalStorage(e) {
+      myLocalStorage.accept();
+    },
+    addList: function addList(e) {
+      e.preventDefault();
+      var value = inputListElement.value.trim();
+      if (value.length > 0) {
+        lists.addList(value);
+      }
+    },
+    selectList: function selectList(e) {
+      var id = Number(e.target.dataset.id);
+      lists.selectList(id);
+    },
+    deleteList: function deleteList(e) {
+      var id = Number(e.target.dataset.id);
+      lists.deleteList(id);
+    },
+    addItem: function addItem(e) {
+      e.preventDefault();
+      var value = itemInputElement.value.trim();
+      if (value.length > 0) {
+        lists.selectedList.addItem(value);
+      }
+    },
+    deleteItem: function deleteItem(e) {
+      var id = Number(e.target.dataset.id);
+      lists.selectedList.deleteItem(id);
+    },
+    toggleItemCompleted: function toggleItemCompleted(e) {
+      var id = Number(e.target.dataset.id);
+      lists.selectedList.toggleItemCompleted(id);
+    },
+    openMoreModal: function openMoreModal(e) {
+      modalMoreElement.classList.remove("hidden");
+      moreButton.setAttribute("data-action", "exitMoreModal");
+      moreIcon.classList.add("hidden");
+      closeIcon.classList.remove("hidden");
+    },
+    exitMoreModal: function exitMoreModal(e) {
+      modalMoreElement.classList.add("hidden");
+      moreButton.setAttribute("data-action", "openMoreModal");
+      moreIcon.classList.remove("hidden");
+      closeIcon.classList.add("hidden");
+    },
+    saveToFile: function saveToFile(e) {
+      _saveToFile("my_lists", myLocalStorage.getAll());
+      this.exitMoreModal();
+    },
+    restoreFromFile: function () {
+      var _restoreFromFile = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
+        var file, data, prop;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              e.preventDefault();
+              file = fileInput.files[0];
+              if (!file) {
+                _context.next = 13;
+                break;
+              }
+              _context.next = 5;
+              return getFromFile(file);
+            case 5:
+              data = _context.sent;
+              myLocalStorage.clear();
+              for (prop in data) {
+                myLocalStorage.setItem(prop, data[prop]);
+              }
+              importForm.reset();
+              this.exitMoreModal();
+              Lists.clearUi();
+              lists = new Lists();
+              lists.render();
+            case 13:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, this);
+      }));
+      function restoreFromFile(_x) {
+        return _restoreFromFile.apply(this, arguments);
+      }
+      return restoreFromFile;
+    }()
+  };
+  body.addEventListener("click", function (e) {
+    var action = e.target.dataset.action;
+    if (action) {
+      try {
+        userActions[action](e);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  });
+  body.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      console.log(e.type);
+      var action = document.activeElement.dataset.action;
+      if (action) {
+        e.preventDefault();
+        try {
+          userActions[action](e);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }
+  });
+};
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=bundleac1a90fec584840bfae9.js.map</script></head>
+
+<body>
+
+
+
+    <div id="container" class="container">
+        <div id="accept-localstorage-modal" class="modal modal-accept-localstorage hidden">
+            <h1 class="modal-title">Create and save Your lists (To-Do, Shopping lists...)</h1>
+            <p class="modal-text">
+                This website works by saving lists to Your browsers local storage.
+            </p>
+            <p class="modal-text">
+                You can clear your storage
+                at any time from browser settings.
+                Just don't forget to copy or save Your lists to a text file.
+            </p>
+            <p class="modal-text">
+                Do not keep sensitive/private information in Your lists.
+            </p>
+            <p class="modal-text">
+                By proceeding You accept to store your lists to Your browsers local storage.
+            </p>
+            <button type="button" id="accept-localstorage-btn" class="btn modal-btn" data-action="acceptLocalStorage">OK</button>
+        </div>
+        <button class="more-btn btn-icon" data-action="openMoreModal" tabindex="0" id="more-btn">
+            <svg id="more-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.19 14.06C20.3277 14.06 21.25 13.1377 21.25 12C21.25 10.8623 20.3277 9.94 19.19 9.94C18.0523 9.94 17.13 10.8623 17.13 12C17.13 13.1377 18.0523 14.06 19.19 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 14.06C13.1377 14.06 14.06 13.1377 14.06 12C14.06 10.8623 13.1377 9.94 12 9.94C10.8623 9.94 9.94 10.8623 9.94 12C9.94 13.1377 10.8623 14.06 12 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.81 14.06C5.9477 14.06 6.87 13.1377 6.87 12C6.87 10.8623 5.9477 9.94 4.81 9.94C3.67229 9.94 2.75 10.8623 2.75 12C2.75 13.1377 3.67229 14.06 4.81 14.06Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg id="close-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M16.945 15.66C17.305 16.02 17.305 16.58 16.945 16.94C16.765 17.12 16.545 17.2 16.305 17.2C16.065 17.2 15.845 17.12 15.665 16.94L12.005 13.28L8.345 16.94C8.165 17.12 7.94501 17.2 7.70501 17.2C7.46501 17.2 7.24502 17.12 7.06502 16.94C6.70502 16.58 6.70502 16.02 7.06502 15.66L10.725 12L7.06502 8.33999C6.70502 7.97999 6.70502 7.41999 7.06502 7.05999C7.42502 6.69999 7.985 6.69999 8.345 7.05999L12.005 10.72L15.665 7.05999C16.025 6.69999 16.585 6.69999 16.945 7.05999C17.305 7.41999 17.305 7.97999 16.945 8.33999L13.285 12L16.945 15.66Z"
+                    fill="black" />
+            </svg>
+        </button>
+        <div id="modal-more" class="modal-more modal hidden">
+            <button class="modal-btn" id="save-to-file-btn" data-action="saveToFile" type='button'>Save all lists to file</button>
+            <form id="import-form" class='import-form' action="#">
+                <label for="file-input">This will delete all your current lists and replace them with lists from file</label>
+                <input class="file-input" type="file" id="file-input" />
+                <button class="modal-btn" id='submit-import' data-action="restoreFromFile" type="submit">Restore from selected file</button>
+            </form>
+        </div>
+
+        <nav class="choose-list-nav">
+            <form class="form add-list-form" id="add-list-form" action="#">
+                <label class="input-label input-list-label" for="input-list">Create new list</label>
+                <input id="input-list" class="text-input" placeholder="Create new list" minlength="1" maxlength="50" required size="16" name="input-list" type="text">
+                <button id="add-list-btn" class="btn add-btn add-list-btn" data-action="addList" type="submit">Add<span class="add-icon">+</span></button>
+            </form>
+            <ul id='lists' class="lists">
+            </ul>
+
+        </nav>
+        <main id="list-container" class="list-container">
+            <div id="list-title-container"> </div>
+
+            <p class="size size-undone" id="size-undone"></p>
+            <ul id="list-undone" class="list list-undone">
+
+            </ul>
+            <p class="size size-completed" id="size-completed"></p>
+            <ul id="list-completed" class="list list-completed">
+
+            </ul>
+            <div class="add-item-form-container">
+                <form class="form add-item-form hidden" id="add-item-form" action="#">
+                    <label class="input-label input-item-label" for="input-item">Add new list item</label>
+                    <input id="input-item" class="text-input" placeholder="Add new item to list" minlength="1" maxlength="50" required size="16" name="input-item" type="text">
+                    <button id="add-item-btn" class="btn add-btn add-item-btn" data-action="addItem" type="submit">Add<span class="add-icon">+</span></button>
+                </form>
+
+            </div>
+        </main>
+
+    </div>
+
+    <div class="hidden">
+        <svg id='bin-svg' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.96 5.83002H5.69V19.19C5.69 20.32 6.61001 21.24 7.74001 21.24H15.9C17.03 21.24 17.95 20.32 17.95 19.19V5.83002H17.96Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M3.78998 5.83002H20.21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15.08 2.73999H8.91998V5.81999H15.08V2.73999Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M9.94 9.75V17.14" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14.05 9.75V17.14" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+    <!-- <script src="bundle.js"> </script> -->
+</body>
+
+</html>
