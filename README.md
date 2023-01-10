@@ -1,6 +1,6 @@
 # Simple application to make lists (To-do, shopping...
 Made with vanilla JavaScript. Used webpack to bundle everything (modules, styles) into one html file.
-[Check it live] (https://htmlpreview.github.io/?https://github.com/codevivi/my-lists/blob/master/dist/index.html)
+[Check it live](https://htmlpreview.github.io/?https://github.com/codevivi/my-lists/blob/master/dist/index.html)
 <br>
 ## How to use:
 
