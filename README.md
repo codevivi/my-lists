@@ -2,6 +2,7 @@
 Made with vanilla JavaScript. Used webpack to bundle everything (modules, styles) into one html file.
 [Check it live](https://htmlpreview.github.io/?https://github.com/codevivi/my-lists/blob/master/dist/index.html)
 <br>
+![alt app screenshot](./src/resources/app_screenshot.png)
 ## How to use:
 
 ```bash
